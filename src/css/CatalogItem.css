@@ -1,0 +1,25 @@
+/* CatalogItem */
+
+.catalogItem {
+	background: #efd3d7;
+	height: 200px;
+	width: 200px;
+	margin: 4px;
+}
+
+.Link {
+	flex: 1;
+}
+
+.catalogItem__img {
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+	opacity: 0.8;
+	transition: all 100ms;
+}
+
+.catalogItem__img:hover {
+	transform: scale(1.03);
+	opacity: 1;
+}

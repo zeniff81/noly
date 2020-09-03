@@ -1,0 +1,34 @@
+/* Header.css */
+.header {
+	max-width: 100%;
+}
+
+.header__row {
+}
+
+.header .row-one {
+	display: flex;
+	justify-content: space-between;
+}
+.header .row-two {
+	display: flex;
+	justify-content: space-between;
+	padding: 0;
+}
+
+.header__logo {
+	object-fit: contain;
+	height: 120px;
+}
+
+.header__title {
+}
+
+.habla {
+}
+
+.con {
+}
+
+.noly {
+}

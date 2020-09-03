@@ -1,0 +1,13 @@
+/* App.css */
+.app {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 7px;
+	width: 100%;
+}
+
+.Link {
+	text-decoration: none;
+}

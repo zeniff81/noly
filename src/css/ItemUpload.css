@@ -1,0 +1,10 @@
+.itemupload {
+	background: #eee;
+	padding: 10px;
+}
+
+.itemupload__input {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}

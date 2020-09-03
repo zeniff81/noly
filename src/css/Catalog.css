@@ -1,0 +1,15 @@
+/* Catalog.css */
+.catalog {
+	color: black;
+	display: flex;
+	font-size: 1em;
+	flex-wrap: wrap;
+	justify-content: center;
+	height: 100%;
+}
+
+.catalog li {
+	border: 1px solid pink;
+	padding: 40px;
+	display: inline-block;
+}

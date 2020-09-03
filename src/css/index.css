@@ -1,0 +1,25 @@
+/* index.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+body,
+body::before,
+body::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body * {
+	font-family: 'Handlee', cursive;
+	font-size: 20px;
+}
+
+:root {
+	--primary: #f06277;
+	--secondary: #1b918d;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+}

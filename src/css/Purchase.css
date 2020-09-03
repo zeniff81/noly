@@ -1,0 +1,18 @@
+.purchase {
+	margin: 1em;
+	display: flex;
+	flex-direction: column;
+}
+
+.purchase__info {
+	display: flex;
+	flex-direction: column;
+}
+
+.purchase__info input {
+	margin-bottom: 2em;
+}
+
+.purchase__submit {
+	margin-top: 1em;
+}

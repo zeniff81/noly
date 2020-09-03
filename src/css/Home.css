@@ -1,0 +1,36 @@
+/* Home.css */
+.home {
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.home__linksContainer {
+	margin: 1em auto;
+	display: flex;
+	height: 140px;
+	align-items: stretch;
+}
+
+.home__linksContainer .Link {
+}
+
+.home__link {
+	border: 1px solid #eee;
+	box-shadow: 1px 1px 5px #ddd;
+	box-sizing: border-box;
+	height: 100%;
+	margin: 0 10px;
+	padding: 14px 16px;
+	width: 100%;
+}
+
+.home__title {
+	font-size: 1.5em;
+	color: #8e9aaf;
+}
+.home__subtitle {
+	font-size: 0.8em;
+	color: gray;
+}

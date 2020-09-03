@@ -1,0 +1,50 @@
+/* Navbar.css */
+.navbar {
+	background: #feeafa;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 4px 2em;
+	height: 100%;
+}
+
+.navbar button {
+	background: none;
+	color: var(--primary);
+	font-size: 1em;
+	border: none;
+	box-shadow: 1px 1px 1px #ddd;
+	padding: 7px 10px;
+}
+
+.navbar .logo {
+	display: flex;
+	gap: 4px;
+}
+
+.navbar .logo * {
+	text-decoration: none;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-size: 1.5em;
+}
+
+.logo .habla {
+	color: var(--primary);
+}
+.logo .con {
+	color: gray;
+}
+.logo .noly {
+	color: var(--secondary);
+}
+
+.navbar__search {
+	flex: 1;
+	margin: 0 1em;
+}
+
+.navbar__input {
+	box-shadow: 1px 1px 5px #ddd;
+	border: none;
+	width: 100%;
+}

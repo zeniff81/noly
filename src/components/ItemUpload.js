@@ -2,7 +2,7 @@ import '../css/ItemUpload.css';
 import { useState } from 'react';
 import ProgressBar from './ProgressBar';
 import React from 'react';
-import useStorage from '../firestore/useStorage';
+import useStorage from '../firebase/useStorage';
 
 function ItemUpload() {
 	const [file, setFile] = useState(null);

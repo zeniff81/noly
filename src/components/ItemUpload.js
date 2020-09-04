@@ -6,7 +6,6 @@ import useStorage from '../firebase/useStorage';
 import Catalog from './Catalog';
 
 //TODO: create grid to show current items
-//TODO  create CART
 
 function ItemUpload() {
 	const [file, setFile] = useState(null);

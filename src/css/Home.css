@@ -16,8 +16,11 @@
 .home__linksContainer .Link {
 }
 
+.home .Link {
+	margin: 0 10px;
+}
+
 .home__link {
-	border: 1px solid #eee;
 	box-shadow: 1px 1px 5px #ddd;
 	box-sizing: border-box;
 	height: 100%;

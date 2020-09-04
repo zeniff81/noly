@@ -11,6 +11,7 @@ import './css/Footer.css';
 import Purchase from './components/Purchase.js';
 import ThankYouPurchase from './components/ThankYouPurchase.js';
 import ItemUpload from './components/ItemUpload.js';
+import Test from './components/Test.js';
 
 function App() {
 	return (
@@ -25,9 +26,9 @@ function App() {
 						<Route path="/purchase/:selectedImage" component={Purchase} />
 						<Route path="/thankyoupurchase" component={ThankYouPurchase} />
 						<Route path="/itemupload" component={ItemUpload} />
+						<Route path="/test" component={Test} />
 					</Switch>
 				</Content>
-				<Footer />
 			</Router>
 		</div>
 	);

@@ -9,7 +9,7 @@ const useStorage = (file) => {
 	useEffect(() => {
 		if (!file) return;
 		const storageRef = projectStorage.ref(file.name);
-		const firestoreRef = projectFirestore.ref();
+		const firestoreRef = projectFirestore.collection('ropa');
 
 		storageRef.put(file).on(
 			'state_changed',
@@ -21,6 +21,13 @@ const useStorage = (file) => {
 
 			async () => {
 				const url = await storageRef.getDownloadURL();
+				await firestoreRef.add({
+					description: 'new description',
+					isNew: 'new isNew',
+					size: 'new size',
+					title: 'new title',
+					url: url,
+				});
 				setUrl(url);
 				console.log(url);
 			}

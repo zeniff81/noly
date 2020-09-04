@@ -5,10 +5,27 @@
 	height: 200px;
 	width: 200px;
 	margin: 4px;
+	position: relative;
 }
 
 .Link {
 	flex: 1;
+}
+
+.imageContainer {
+	transition: all 100ms;
+}
+
+.imageContainer:hover {
+	transform: scale(1.03);
+	opacity: 1;
+}
+
+.catalogItem__newIcon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 25%;
 }
 
 .catalogItem__img {
@@ -16,10 +33,9 @@
 	width: 200px;
 	object-fit: cover;
 	opacity: 0.8;
-	transition: all 100ms;
 }
 
 .catalogItem__img:hover {
-	transform: scale(1.03);
 	opacity: 1;
+	box-shadow: 2px 2px 2px gray;
 }

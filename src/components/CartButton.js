@@ -32,6 +32,9 @@ function CartButton({ addToCart, continueBrowsing, goToCart }) {
 
 			{state2 && (
 				<div className="btn-state2">
+					<div className="state2__message">
+						Este artículo se agregó al carrito de compras
+					</div>
 					<button
 						className="cartbutton__btn cartbutton__continueBrowsing"
 						onClick={continueBrowsingClick}

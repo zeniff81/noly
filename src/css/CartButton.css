@@ -20,3 +20,18 @@
 	background: var(--primary);
 	color: white;
 }
+.state2__message {
+	padding: 10px;
+	border: solid 1px white;
+}
+
+.state2__message__border {
+	border: solid 1px white;
+	animation: state2__message__border 1s infinite alternate;
+}
+
+@keyframes state2__message {
+	to {
+		padding: 5px;
+	}
+}

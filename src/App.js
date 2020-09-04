@@ -24,7 +24,7 @@ function App() {
 						<Route path="/contactus" component={ContactUs} />
 						<Route path="/purchase/:selectedImage" component={Purchase} />
 						<Route path="/thankyoupurchase" component={ThankYouPurchase} />
-						<Route path="/imgupload" component={ItemUpload} />
+						<Route path="/itemupload" component={ItemUpload} />
 					</Switch>
 				</Content>
 				<Footer />

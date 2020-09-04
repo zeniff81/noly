@@ -25,6 +25,10 @@ function Navbar() {
 				<Link to="/contactus" className="Link">
 					<button>Contáctanos</button>
 				</Link>
+
+				<Link to="/itemupload" className="Link">
+					<button>Subir</button>
+				</Link>
 			</div>
 		</div>
 	);

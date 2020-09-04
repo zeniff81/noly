@@ -1,7 +1,8 @@
-import React from 'react';
+import '../css/ItemUpload.css';
 import { useState } from 'react';
 import ProgressBar from './ProgressBar';
-import '../css/ItemUpload.css';
+import React from 'react';
+import useStorage from '../firestore/useStorage';
 
 function ItemUpload() {
 	const [file, setFile] = useState(null);
@@ -9,6 +10,7 @@ function ItemUpload() {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [size, setSize] = useState('');
+	const { progress, url } = useStorage(file);
 
 	const onChangeHandler = (e) => {
 		const selected = e.target.files[0];
@@ -46,10 +48,13 @@ function ItemUpload() {
 				<label htmlFor="size">Size</label>
 				<input type="text" id="size" value={size} onChange={textInputChange} />
 
+				<label htmlFor="isnew">Nuevo</label>
+				<input type="checkbox" name="" id="isnew" />
+
 				<label htmlFor="file"></label>
 				<input type="file" name="" id="file" onChange={onChangeHandler} />
 
-				{file && <ProgressBar file={file} setFile={setFile} />}
+				{file && <ProgressBar progress={progress} />}
 			</div>
 		</div>
 	);

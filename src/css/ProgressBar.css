@@ -1,5 +1,6 @@
 .progressbar {
 	border: 1px solid #000;
+	background: yellowgreen;
 	height: 30px;
 	width: 100%;
 }

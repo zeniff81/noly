@@ -1,11 +1,9 @@
 import React from 'react';
-import useStorage from '../firestore/useStorage';
 import '../css/ProgressBar.css';
 
-function ProgressBar({ file, setFile }) {
-	const { progress, url } = useStorage(file);
+function ProgressBar({ progress }) {
 	return (
-		<div className="progressbar">
+		<div className="progressbar" style={{ width: `${progress}%` }}>
 			<div className="progressbar__text">{progress}%</div>
 		</div>
 	);

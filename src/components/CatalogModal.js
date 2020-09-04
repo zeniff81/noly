@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/CatalogModal.css';
 import { Link } from 'react-router-dom';
+import CartButton from './CartButton';
 
 function CatalogModal(props) {
 	const { title, description, size, url, id } = props.doc;
@@ -32,14 +33,22 @@ function CatalogModal(props) {
 				</h3>
 				<div className="catalogModal__info catalogModal__size">{size}</div>
 
-				<Link to={`/purchase/${id}`}>
-					<button className="catalogModal__info catalogModal__purchase">
-						Me interesa
-					</button>
-				</Link>
+				{/* <Link to={`/purchase/${id}`}> */}
+				<CartButton
+					addToCart={dummyMethods.addTocart}
+					continueBrowsing={dummyMethods.continueBrowsing}
+					goToCart={dummyMethods.goToCart}
+				/>
+				{/* </Link> */}
 			</div>
 		</div>
 	);
 }
+
+const dummyMethods = {
+	addTocart: () => console.log('adding to cart'),
+	continueBrowsing: () => console.log('more browsing'),
+	goToCart: () => console.log('take me to the cart'),
+};
 
 export default CatalogModal;

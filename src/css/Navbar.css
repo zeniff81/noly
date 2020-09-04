@@ -48,3 +48,19 @@
 	border: none;
 	width: 100%;
 }
+
+@media screen and (max-width: 480px) {
+	.navbar__links {
+		justify-content: flex-end;
+		align-items: stretch;
+	}
+	.Link {
+		font-size: 12px;
+		display: flex;
+		justify-content: stretch;
+	}
+
+	.Link button {
+		width: 100%;
+	}
+}

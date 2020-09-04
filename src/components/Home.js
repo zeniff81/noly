@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/Home.css';
 import { Link } from 'react-router-dom';
 import Catalog from './Catalog';
+import CartButton from './CartButton';
 
 function Home() {
 	return (
@@ -33,6 +34,7 @@ function Home() {
 					</div>
 				</Link>
 			</div>
+
 			<Catalog />
 		</div>
 	);

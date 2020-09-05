@@ -1,10 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import '../css/CartButton.css';
+import { withRouter } from 'react-router-dom';
 
-function CartButton({ addToCart, continueBrowsing, goToCart }) {
+function CartButton({ addToCart, continueBrowsing, history }) {
 	const [state1, setState1] = useState(true);
 	const [state2, setState2] = useState(false);
+	const [goToCart, setGoToCart] = useState(false);
 
 	const addToCartClick = (e) => {
 		e.stopPropagation();
@@ -15,8 +17,9 @@ function CartButton({ addToCart, continueBrowsing, goToCart }) {
 	const continueBrowsingClick = () => {
 		continueBrowsing();
 	};
-	const goToCartClick = () => {
-		goToCart();
+	const goToCartClick = (e) => {
+		e.stopPropagation();
+		history.push('/cart');
 	};
 
 	return (
@@ -35,22 +38,24 @@ function CartButton({ addToCart, continueBrowsing, goToCart }) {
 					<div className="state2__message">
 						Este artículo se agregó al carrito de compras
 					</div>
-					<button
-						className="cartbutton__btn cartbutton__continueBrowsing"
-						onClick={continueBrowsingClick}
-					>
-						Seguir mirando
-					</button>
-					<button
-						className="cartbutton__btn cartbutton__goToCart"
-						onClick={goToCartClick}
-					>
-						Ir al carrito
-					</button>
+					<div className="btn-state2__btnContainer">
+						<button
+							className="cartbutton__btn cartbutton__continueBrowsing"
+							onClick={continueBrowsingClick}
+						>
+							Seguir mirando
+						</button>
+						<button
+							className="cartbutton__btn cartbutton__goToCart"
+							onClick={goToCartClick}
+						>
+							Ir al carrito
+						</button>
+					</div>
 				</div>
 			)}
 		</div>
 	);
 }
 
-export default CartButton;
+export default withRouter(CartButton);

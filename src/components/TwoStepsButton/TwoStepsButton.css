@@ -1,0 +1,32 @@
+.tsb {
+	border: 1px solid #000;
+	margin: 1em;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tsb__type-B {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tsb__button {
+	color: black;
+	background: greenyellow;
+	outline: none;
+	border-radius: 10px;
+	border: 1px solid white;
+	margin: 10px;
+	border: none;
+	flex: 25%;
+	box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+	padding: 6px 20px;
+	transition: all 100ms;
+}
+
+.tsb__button--special {
+	background: red;
+	color: white;
+}

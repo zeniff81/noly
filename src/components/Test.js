@@ -1,45 +1,40 @@
 import React from 'react';
-import { combineReducers } from 'redux';
-import { connect } from 'react-redux';
-import { addToCart } from '../redux/cart/actions';
-import { useState } from 'react';
+import TwoStepsButton from './TwoStepsButton/TwoStepsButton';
 
-function Test(props) {
-	const [item, setItem] = useState('');
-
-	const onClickHandler = (e) => {
-		props.addToCart(item);
-	};
-
+function Test() {
 	return (
-		<div className="test">
-			<h1>Test</h1>
-			<input
-				type="text"
-				value={item}
-				onChange={(e) => setItem(e.target.value)}
-			/>
-			<button onClick={onClickHandler}>Add to cart</button>
-			<ul>
-				{props.items.map((item) => {
-					return <li>{item}</li>;
-				})}
-			</ul>
-			<p>current item: {item}</p>
+		<div>
+			<TwoStepsButton details={testDetails} />
 		</div>
 	);
 }
 
-const mapStateToProps = (state) => {
-	return {
-		items: state.cart.items,
-	};
-};
+export default Test;
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		addToCart: (item) => dispatch(addToCart(item)),
-	};
-};
+const testDetails = {
+	arrButtonA: [
+		{
+			caption: 'Comprar',
+		},
+	],
+	arrButtonB: [
+		{
+			caption: 'Seguir mirando',
+			special: false,
+		},
+		{
+			caption: 'Whatsapp',
+			special: false,
+		},
+		{
+			caption: 'Seguir mirando',
+			special: false,
+		},
+		{
+			caption: 'Whatsapp',
+			special: true,
+		},
+	],
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test);
+	message: 'GRACIAS POR SU COMPRA! Le contataremos en breve.',
+};

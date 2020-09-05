@@ -1,19 +1,31 @@
+.cartbutton {
+	padding: 4px;
+	width: 80%;
+	display: flex;
+	justify-content: center;
+}
+
+.btn-state2 {
+	display: flex;
+	flex-wrap: wrap;
+}
 .cartbutton__btn {
-	background: greenyellow;
 	color: black;
+	background: greenyellow;
+	outline: none;
+	border-radius: 10px;
+	border: 1px solid white;
+	margin: 10px;
+	border: none;
+	width: 200px;
 	box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
 	padding: 6px 20px;
-	border: none;
-	margin: 10px;
-	border-radius: 10px;
 	transition: all 100ms;
-	outline: none;
-	border: 1px solid white;
 }
 .cartbutton__btn:hover {
 	transform: scale(1.1);
-	filter: brightness(80%);
 	border-color: rgba(0, 0, 0, 0);
+	filter: brightness(80%);
 }
 
 .cartbutton__goToCart {
@@ -23,15 +35,16 @@
 .state2__message {
 	padding: 10px;
 	border: solid 1px white;
+	flex: 100%;
+	text-align: center;
 }
 
 .state2__message__border {
 	border: solid 1px white;
-	animation: state2__message__border 1s infinite alternate;
 }
 
-@keyframes state2__message {
-	to {
-		padding: 5px;
-	}
+.btn-state2__btnContainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }

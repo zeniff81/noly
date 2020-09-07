@@ -1,15 +1,13 @@
 .tsb {
-	margin: 1em;
-	padding: 1em;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-top: 1em;
 }
 
-.tsb__type-B {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
+.tsb__message {
+	width: 100%;
 }
 
 .tsb__button {
@@ -19,15 +17,21 @@
 	border: none;
 	box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
 	color: black;
-	flex: 25%;
+	flex: 1;
 	margin: 10px;
 	outline: none;
 	padding: 6px 20px;
 	transition: all 100ms;
 }
 
-.tsb__message {
-	color: white;
+.tsb__type-B {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.tsb__type-B button {
 }
 
 .tsb__button:hover {

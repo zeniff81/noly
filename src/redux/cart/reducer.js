@@ -1,7 +1,32 @@
 import * as ACTIONS from './types';
 
 const initialState = {
-	cartItems: [],
+	cartItems: [
+		{
+			id: '810c5bbd-081a-4d20-85d3-83c7231e0436',
+			title: 'new title',
+			description: 'new description',
+			price: 0,
+			imageUrl:
+				'https://firebasestorage.googleapis.com/v0/b/habla-con-noly.appspot.com/o/ropa%20(4).png?alt=media&token=7ae771ec-c89d-44d6-a621-3396f9d13ba4',
+		},
+		{
+			id: '4396ddfe-5eb1-4fd3-beff-6832a4cb1a9e',
+			title: 'new title',
+			description: 'new description',
+			price: 0,
+			imageUrl:
+				'https://firebasestorage.googleapis.com/v0/b/habla-con-noly.appspot.com/o/ropa%20(2).png?alt=media&token=bf823da5-dcb5-4e4a-8cc4-13964fbf7a44',
+		},
+		{
+			id: '9bc3b643-6eb0-4158-99e3-6ef4c4d31e69',
+			title: 'new title',
+			description: 'new description',
+			price: 0,
+			imageUrl:
+				'https://firebasestorage.googleapis.com/v0/b/habla-con-noly.appspot.com/o/colchas%20(1).png?alt=media&token=e259be05-e192-485d-84de-efc4e9e8cc33',
+		},
+	],
 	totals: {
 		partialTotal: 0,
 		shipping: 100,

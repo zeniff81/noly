@@ -9,71 +9,66 @@ function Cart({ cartItems, totals, setShipping, removeFromCart }) {
 	const [includeShipping, setIncludeShipping] = useState(true);
 
 	return (
-		<div>
-			{cartItems.length === 0 ? (
-				<Redirect to="/cartempty" />
-			) : (
-				<div className="cart">
-					<div className="cart__header">
-						<h1>CARRITO</h1>
-						<div className="cart__ItemsQty">{cartItems.length} artículos</div>
-					</div>
-					<div className="cart__items">
-						{cartItems.map((item) => {
-							return (
-								<div className="cart__row">
-									<DeleteIcon
-										className="deleteIcon"
-										onClick={() => {
-											removeFromCart(item.id);
-										}}
-									/>
-									<CartLabelValue label="cant" value="1" widthAuto center />
-									<CartItem
-										title={item.title}
-										description={item.description}
-										imageUrl={item.imageUrl}
-									/>
-									<CartLabelValue label="subtotal" value="300" />
-									<CartLabelValue label="precio" value={item.price} />
-								</div>
-							);
-						})}
-					</div>
-
-					<div className="cart__totals">
-						<div className="cart__partialTotal">
-							<span>Total parcial $</span>
-							<span className="partialTotal__value">{totals.partialTotal}</span>
-						</div>
-						<div className="cart__shipping">
-							<input
-								type="checkbox"
-								checked={includeShipping}
-								onChange={(e) => {
-									setIncludeShipping(!includeShipping);
-									const newShippingState = !includeShipping;
-									newShippingState === true ? setShipping(100) : setShipping(0);
+		<div className="cart">
+			{cartItems.length === 0 && <Redirect to="/cartempty" />}
+			<div className="cart__header">
+				<h1>CARRITO</h1>
+				<div className="cart__ItemsQty">{cartItems.length} artículos</div>
+			</div>
+			<div className="cart__items">
+				{cartItems.map((item) => {
+					return (
+						<div className="cart__row">
+							<DeleteIcon
+								className="deleteIcon"
+								onClick={() => {
+									removeFromCart(item.id);
 								}}
 							/>
-							{'  '}
-							<span>Envío $</span>{' '}
-							<span className="partialTotal__value">{totals.shipping}</span>
+							<CartLabelValue label="cant" value="1" widthAuto center />
+							<CartItem
+								title={item.title}
+								description={item.description}
+								imageUrl={item.imageUrl}
+							/>
+							<CartLabelValue label="subtotal" value="300" />
+							<CartLabelValue label="precio" value={item.price} />
 						</div>
-						<div className="cart__divider"></div>
-						<div className="cart__total">
-							<span>TOTAL $</span>{' '}
-							<span className="partialTotal__value">{totals.grandTotal}</span>
-						</div>
-						<div>shipping is: {totals.shipping}</div>
-					</div>
+					);
+				})}
+			</div>
 
-					<CartCustInfo />
-					<div className="cart__actions">
-						<button>COMPRAR</button>
-					</div>
+			<div className="cart__totals">
+				<div className="cart__partialTotal">
+					<span>Total parcial $</span>
+					<span className="partialTotal__value">{totals.partialTotal}</span>
 				</div>
-			)}
+				<div className="cart__shipping">
+					<input
+						type="checkbox"
+						checked={includeShipping}
+						onChange={(e) => {
+							setIncludeShipping(!includeShipping);
+							const newShippingState = !includeShipping;
+							newShippingState === true ? setShipping(100) : setShipping(0);
+						}}
+					/>
+					{'  '}
+					<span>Envío $</span>{' '}
+					<span className="partialTotal__value">{totals.shipping}</span>
+				</div>
+				<div className="cart__divider"></div>
+				<div className="cart__total">
+					<span>TOTAL $</span>{' '}
+					<span className="partialTotal__value">{totals.grandTotal}</span>
+				</div>
+				<div>shipping is: {totals.shipping}</div>
+			</div>
+
+			<CartCustInfo />
+			<div className="cart__actions">
+				<button>COMPRAR</button>
+			</div>
 		</div>
 	);
 }

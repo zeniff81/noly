@@ -1,67 +1,55 @@
 /* CatalogModal */
 
 .catalogModal {
-	position: fixed;
-	top: 0;
-	left: 0;
-
+	align-items: center;
 	background: rgba(0, 0, 0, 0.8);
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
 	width: 100vw;
-	box-sizing: border-box;
 }
 
 .catalogModal__content {
 	display: flex;
 	flex-direction: column;
-	border: 3px solid red;
+	align-items: center;
 }
 
 .catalogModal__row {
-	display: flex;
-	flex-direction: column;
 	align-items: center;
-}
-.catalogModal__info {
+	display: flex;
+	color: white;
+	flex-direction: column;
+	text-align: center;
 }
 
 .catalogModal__title {
 	font-size: 1.5em;
 	text-transform: uppercase;
-	border: 1px solid green;
 }
 
 .catalogModal__description {
-	font-size: 25px;
-	border: 1px solid green;
+	font-size: 1.3em;
 }
 
 .catalogModal__size {
 	font-size: 1.1em;
+}
+.catalogModal__price {
+	font-size: 1.1em;
 	color: greenyellow;
-	border: 1px solid green;
 }
 
 .catalogModal__img {
 	border: 3px solid white;
-	width: 50%;
+	width: 70%;
 }
 
 .catalogModal__infoContainer {
 	border: 1px solid red;
-}
-.catalogModal__info {
-	color: white;
-}
-
-.catalogModal__purchase {
-	background: greenyellow;
-	border-radius: 10px;
-	border: 1px solid white;
-	border: none;
-	box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
-	color: black;
-	transition: all 100ms;
 }

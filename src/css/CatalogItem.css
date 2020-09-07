@@ -3,12 +3,9 @@
 .catalogItem {
 	height: 160px;
 	width: 160px;
-	margin: 4px;
 	position: relative;
-}
-
-.Link {
-	flex: 1;
+	overflow: hidden;
+	margin: 2px;
 }
 
 .imageContainer {

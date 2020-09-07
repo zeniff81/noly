@@ -17,10 +17,6 @@ function Navbar() {
 				</Link>
 			</div>
 
-			<div className="navbar__search">
-				<input type="text" className="navbar__input" placeholder="buscar..." />
-			</div>
-
 			<div className="navbar__links ">
 				<Link to="/" className="Link">
 					<HomeIcon className="materialIcon" />

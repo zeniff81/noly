@@ -1,4 +1,8 @@
 /* Footer.css */
 .footer {
+	text-align: center;
 	border: 1px solid pink;
+	padding: 10px;
+	font-weight: 200;
+	font-family: var(--fontSecondary);
 }

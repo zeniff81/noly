@@ -1,11 +1,12 @@
 /* App.css */
 .app {
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	height: 100vh;
 }
 
 .Link {
 	text-decoration: none;
+	margin: 0;
+	padding: 0;
 }

@@ -4,19 +4,22 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	align-items: center;
 	overflow: hidden;
+	padding: 1em;
 }
 
 .home__linksContainer {
 	align-items: flex-start;
 	align-items: stretch;
-	gap: 4px;
-	text-align: center;
 	display: flex;
 	flex-direction: row;
+	gap: 4px;
+	font-size: 1em;
 	justify-content: space-between;
 	margin: 0 1em 1em;
-	width: 80%;
+	text-align: center;
+	width: 100%;
 }
 .home__linksContainer .Link {
 	border: 1px solid #bbb;
@@ -34,10 +37,11 @@
 
 .home__title {
 	color: var(--colorSecondary);
+	font-size: 1.7em;
 }
 .home__subtitle {
 	font-family: var(--fontSecondary);
-	font-size: 0.7em;
 	color: var(--colorPrimary);
 	color: gray;
+	font-size: 1em;
 }

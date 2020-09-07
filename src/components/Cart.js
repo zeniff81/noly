@@ -31,7 +31,7 @@ function Cart({ cartItems, totals, setShipping, removeFromCart }) {
 								description={item.description}
 								imageUrl={item.imageUrl}
 							/>
-							<CartLabelValue label="subtotal" value="300" />
+							<CartLabelValue label="sub" value="300" />
 							<CartLabelValue label="precio" value={item.price} />
 						</div>
 					);
@@ -67,7 +67,7 @@ function Cart({ cartItems, totals, setShipping, removeFromCart }) {
 
 			<CartCustInfo />
 			<div className="cart__actions">
-				<button>COMPRAR</button>
+				<button className="cart__purchase">COMPRAR</button>
 			</div>
 		</div>
 	);

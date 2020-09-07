@@ -1,7 +1,7 @@
 .navbar {
-	display: flex;
 	box-sizing: border-box;
-	flex-direction: row;
+	display: flex;
+	justify-content: space-between;
 	padding: 0 1em;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .navbar__logo {
-	width: 60px;
+	width: 70px;
 	height: auto;
 }
 .navbar__search {
@@ -27,20 +27,26 @@
 }
 .navbar__links {
 	display: flex;
-	flex-direction: row;
 	flex-wrap: wrap;
-	width: 200px;
-	height: 100%;
-	flex: 2;
+	justify-content: stretch;
+	align-items: stretch;
 }
+
 .navbar__links .Link {
 	background: var(--colorSecondary);
 	display: flex;
-	justify-content: center;
 	align-items: center;
+}
+
+.navbar__links .materialIcon {
+	align-items: center;
+	background: var(--colorSecondary);
 	color: white;
-	flex: 40%;
+	display: flex;
+	height: 50px;
+	justify-content: center;
 	margin: 1px;
+	width: 50px;
 }
 
 .materialIcon {

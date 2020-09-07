@@ -3,7 +3,7 @@
 	box-sizing: border-box;
 	flex-direction: column;
 	padding: 10px;
-	border: 1px solid red;
+
 	width: 100%;
 }
 
@@ -18,25 +18,28 @@
 	margin: 0;
 }
 
+.cart__row {
+	display: flex;
+	justify-content: flex-start;
+}
 .cart__ItemsQty {
 	color: gray;
 	margin: 0px 1em;
 }
+
+/* CartItem  */
+
+.cartItem {
+	flex: 1;
+}
 .cart__items {
+	background: white;
 	box-shadow: 1px 1px 5px gray;
-	padding: 10px;
-	margin: 0 1em 1em;
+	box-shadow: 1px 1px 5px gray;
 	display: flex;
 	flex-direction: column;
-}
-.cart__row {
-	display: flex;
-	justify-content: space-between;
-}
-.cart__qty {
-	color: red;
-	width: 50px;
-	text-align: center;
+	margin: 0 1em 1em;
+	padding: 10px;
 }
 
 .deleteIcon {
@@ -47,6 +50,10 @@
 }
 
 .cart__totals {
+	background: var(--colorSecondary);
+	color: white;
+	box-shadow: 1px 1px 5px gray;
+	padding: 1em;
 	margin: 1em;
 }
 
@@ -63,11 +70,10 @@
 }
 
 .cart__divider {
-	border: 1px solid gray;
+	border: 1px solid white;
 }
 
 .cart__total {
-	background: #ddd;
 	font-weight: 800;
 	text-align: right;
 	margin-bottom: 1em;
@@ -76,11 +82,15 @@
 /* CartCustInfo */
 
 .cart__custInfo {
+	background: white;
+	box-shadow: 1px 1px 5px gray;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 1em;
-	width: 60%;
+	width: 82%;
+	padding: 1em;
+
 	align-self: center;
 }
 
@@ -100,28 +110,33 @@
 	margin: 5px 0;
 	justify-content: flex;
 	flex-wrap: wrap;
-	border: 1px solid red;
 }
 
 .cartItem * {
-	border: 1px solid red;
+}
+
+.cartItem__image {
+	height: 70px;
+	margin-right: 10px;
+	width: 50px;
 }
 .cartItem__row {
 	display: flex;
 	flex-direction: column;
-	width: 200px;
-}
-.cartItem__image {
-	height: 70px;
-	margin-right: 10px;
-	width: 70px;
+	flex: 1;
+	overflow: hidden;
 }
 .cartItem__title {
+	margin: 0;
+	padding: 0;
 	font-weight: 500;
+	font-size: 1em;
 }
 
 .cartItem__description {
-	font-size: 0.8em;
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
 	color: gray;
 }
 .cartItem__price {
@@ -129,15 +144,14 @@
 
 /* CartLabelValue */
 .cartLabelValue {
-	padding: 4px;
-	width: 77px;
+	align-items: flex-end;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	align-items: flex-end;
-	margin: 0 4px;
-	border: 1px solid orange;
-	/* background: lightyellow; */
+	margin: 0 2px;
+
+	justify-self: flex-end;
 }
 
 .clv-l {
@@ -147,4 +161,13 @@
 .clv-v {
 	font-size: 1em;
 	color: black;
+}
+
+.cart__actions {
+	display: flex;
+	justify-content: center;
+}
+
+.cart__purchase {
+	padding: 1em;
 }

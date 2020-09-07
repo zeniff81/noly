@@ -2,7 +2,7 @@ import { projectFirestore } from './config';
 const { useEffect } = require('react');
 const { useState } = require('react');
 
-const useFirestore = (collection) => {
+const useFirestore = (collection = 'ropa') => {
 	const [docs, setDocs] = useState([]);
 
 	useEffect(() => {

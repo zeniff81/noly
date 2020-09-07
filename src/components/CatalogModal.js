@@ -1,10 +1,12 @@
 import React from 'react';
 import '../css/CatalogModal.css';
-import { Link } from 'react-router-dom';
-import CartButton from './CartButton';
+import TwoStepsButton from './TwoStepsButton/TwoStepsButton';
+import { connect } from 'react-redux';
+import { addToCart } from '../redux/cart/actions';
+import { v4 as uuidv4 } from 'uuid';
 
 function CatalogModal(props) {
-	const { title, description, size, url, id } = props.doc;
+	const { title, description, size, imageUrl, price } = props.doc;
 	const { setSelected } = props;
 
 	const hideModal = () => {
@@ -15,40 +17,79 @@ function CatalogModal(props) {
 		e.stopPropagation();
 	};
 
-	console.log('id', id);
+	const TwoStepsButton__methods = {
+		addTocart: {
+			actions: () =>
+				props.addTocart({
+					id: uuidv4(),
+					title: title,
+					description: description,
+					price: price,
+					imageUrl: imageUrl,
+				}),
+			route: null,
+		},
+		continueBrowsing: {
+			route: null,
+		},
+		goToCart: {
+			route: '/cart',
+		},
+	};
 
 	return (
 		<div className="catalogModal" onClick={hideModal}>
 			<div className="catalogModal__content">
-				<h1 className="catalogModal__info catalogModal__title">{title}</h1>
-				<img
-					className="catalogModal__img"
-					onClick={imageClick}
-					src={url}
-					alt=""
-				/>
-
-				<h3 className="catalogModal__info catalogModal__description">
-					{description}
-				</h3>
-				<div className="catalogModal__info catalogModal__size">{size}</div>
-
-				{/* <Link to={`/purchase/${id}`}> */}
-				<CartButton
-					addToCart={dummyMethods.addTocart}
-					continueBrowsing={dummyMethods.continueBrowsing}
-					goToCart={dummyMethods.goToCart}
-				/>
-				{/* </Link> */}
+				<div className="catalogModal__row">
+					<div className="catalogModal__info catalogModal__title">{title}</div>
+				</div>
+				<div className="catalogModal__row">
+					<img
+						className="catalogModal__img"
+						onClick={imageClick}
+						src={imageUrl}
+						alt=""
+					/>
+				</div>
+				<div className="catalogModal__row">
+					<div className="catalogModal__info catalogModal__description">
+						{description}
+					</div>
+					<div className="catalogModal__info catalogModal__size">{size}</div>
+					<div className="catalogModal__info catalogModal__price">{price}</div>
+				</div>
+				<div className="catalogModal__row">
+					<TwoStepsButton
+						details={{
+							arrButtonA: [
+								{
+									caption: 'Añadir al carrito',
+									actionsAndRoute: TwoStepsButton__methods.addTocart,
+								},
+							],
+							arrButtonB: [
+								{
+									caption: 'Seguir mirando',
+									actionsAndRoute: TwoStepsButton__methods.continueBrowsing,
+								},
+								{
+									caption: 'Ir al carrito',
+									actionsAndRoute: TwoStepsButton__methods.goToCart,
+								},
+							],
+							message: 'Este artículo se agregó al carrito de compras',
+						}}
+					/>
+				</div>
 			</div>
 		</div>
 	);
 }
 
-const dummyMethods = {
-	addTocart: () => console.log('adding to cart'),
-	continueBrowsing: () => console.log('more browsing'),
-	goToCart: () => console.log('take me to the cart'),
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addTocart: (item) => dispatch(addToCart(item)),
+	};
 };
 
-export default CatalogModal;
+export default connect(null, mapDispatchToProps)(CatalogModal);

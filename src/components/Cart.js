@@ -1,76 +1,87 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/Cart.css';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { connect } from 'react-redux';
+import { setShipping, removeFromCart } from '../redux/cart/actions';
+import { Redirect } from 'react-router-dom';
 
-function Cart() {
+function Cart({ cartItems, totals, setShipping, removeFromCart }) {
+	const [includeShipping, setIncludeShipping] = useState(true);
+
 	return (
-		<div className="cart">
-			<h1>CARRITO</h1>
-			<div className="cart__ItemsQty">4 artículos</div>
-			<div className="cart__items">
-				<div className="cart__row">
-					<DeleteIcon className="deleteIcon" />
-					<CartLabelValue label="cant" value="1" widthAuto center />
-					<CartItem
-						title="Cortina primaveral"
-						description="Hermosa cortina de colores para la sala o habitación"
-					/>
-					<CartLabelValue label="subtotal" value="300" />
-					<CartLabelValue label="precio" value="10,800" />
-				</div>
-				<div className="cart__row">
-					<DeleteIcon className="deleteIcon" />
-					<CartLabelValue label="cant" value="2" widthAuto center />
-					<CartItem
-						title="Colcha delux"
-						description="Para la habitación de hoy"
-					/>
-					<CartLabelValue label="subtotal" value="300" />
-					<CartLabelValue label="precio" value="600" />
-				</div>
-				<div className="cart__row">
-					<DeleteIcon className="deleteIcon" />
-					<CartLabelValue label="cant" value="1" widthAuto center />
-					<CartItem
-						title="Colcha infantil"
-						description="Con dibujos estampados y temas de niños"
-					/>
-					<CartLabelValue label="subtotal" value="300" />
-					<CartLabelValue label="precio" value="10,800" />
-				</div>
-			</div>
+		<div>
+			{cartItems.length === 0 ? (
+				<Redirect to="/cartempty" />
+			) : (
+				<div className="cart">
+					<div className="cart__header">
+						<h1>CARRITO</h1>
+						<div className="cart__ItemsQty">{cartItems.length} artículos</div>
+					</div>
+					<div className="cart__items">
+						{cartItems.map((item) => {
+							return (
+								<div className="cart__row">
+									<DeleteIcon
+										className="deleteIcon"
+										onClick={() => {
+											removeFromCart(item.id);
+										}}
+									/>
+									<CartLabelValue label="cant" value="1" widthAuto center />
+									<CartItem
+										title={item.title}
+										description={item.description}
+										imageUrl={item.imageUrl}
+									/>
+									<CartLabelValue label="subtotal" value="300" />
+									<CartLabelValue label="precio" value={item.price} />
+								</div>
+							);
+						})}
+					</div>
 
-			<div className="cart__totals">
-				<div className="cart__partialTotal">
-					<span>Total parcial $</span>
-					<span className="partialTotal__value">2,000</span>
-				</div>
-				<div className="cart__shipping">
-					<span>Envío $</span> <span className="partialTotal__value">85</span>
-				</div>
-				<div className="cart__divider"></div>
-				<div className="cart__total">
-					<span>TOTAL $</span>{' '}
-					<span className="partialTotal__value">2,405</span>
-				</div>
-			</div>
+					<div className="cart__totals">
+						<div className="cart__partialTotal">
+							<span>Total parcial $</span>
+							<span className="partialTotal__value">{totals.partialTotal}</span>
+						</div>
+						<div className="cart__shipping">
+							<input
+								type="checkbox"
+								checked={includeShipping}
+								onChange={(e) => {
+									setIncludeShipping(!includeShipping);
+									const newShippingState = !includeShipping;
+									newShippingState === true ? setShipping(100) : setShipping(0);
+								}}
+							/>
+							{'  '}
+							<span>Envío $</span>{' '}
+							<span className="partialTotal__value">{totals.shipping}</span>
+						</div>
+						<div className="cart__divider"></div>
+						<div className="cart__total">
+							<span>TOTAL $</span>{' '}
+							<span className="partialTotal__value">{totals.grandTotal}</span>
+						</div>
+						<div>shipping is: {totals.shipping}</div>
+					</div>
 
-			<CartCustInfo />
-			<div className="cart__actions">
-				<button>COMPRAR</button>
-			</div>
+					<CartCustInfo />
+					<div className="cart__actions">
+						<button>COMPRAR</button>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }
 
-const CartItem = ({ title, description }) => {
+const CartItem = ({ title, description, imageUrl }) => {
 	return (
 		<div className="cartItem">
-			<img
-				src={require('../assets/img/test.png')}
-				alt=""
-				className="cartItem__image"
-			/>
+			<img src={imageUrl} alt="" className="cartItem__image" />
 			<div className="cartItem__row">
 				<div className="cartItem__title">{title}</div>
 				<div className="cartItem__description">{description}</div>
@@ -104,4 +115,18 @@ const CartCustInfo = (props) => {
 	);
 };
 
-export default Cart;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setShipping: (fee) => dispatch(setShipping(fee)),
+		removeFromCart: (id) => dispatch(removeFromCart(id)),
+	};
+};
+
+const mapStateToProp = (state) => {
+	return {
+		cartItems: state.cart.cartItems,
+		totals: state.cart.totals,
+	};
+};
+
+export default connect(mapStateToProp, mapDispatchToProps)(Cart);

@@ -1,22 +1,21 @@
 import '../css/ItemUpload.css';
 import { useState } from 'react';
+import Catalog from './Catalog';
 import ProgressBar from './ProgressBar';
 import React from 'react';
 import useStorage from '../firebase/useStorage';
-import Catalog from './Catalog';
-
-//TODO: create grid to show current items
 
 function ItemUpload() {
 	const [file, setFile] = useState(null);
 	const fileTypes = ['image/jpg', 'image/jpeg', 'image/png'];
-	const [title, setTitle] = useState('');
-	const [description, setDescription] = useState('');
-	const [size, setSize] = useState('');
-	const { progress, url } = useStorage(file);
+	const [title] = useState('');
+	const [description] = useState('');
+	const [size] = useState('');
+	const { progress } = useStorage(file);
 
 	const onChangeHandler = (e) => {
 		const selected = e.target.files[0];
+		console.log(e);
 
 		if (selected && fileTypes.includes(selected.type)) {
 			console.log(selected);

@@ -1,18 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Footer from './components/Footer.js';
-import Header from './components/Header.js';
-import Home from './components/Home.js';
-import Catalog from './components/Catalog.js';
-import ContactUs from './components/ContactUs.js';
-import Content from './components/Content';
-import './css/App.css';
-import './css/Footer.css';
-import Purchase from './components/Purchase.js';
-import ThankYouPurchase from './components/ThankYouPurchase.js';
-import ItemUpload from './components/ItemUpload.js';
-import Test from './components/Test.js';
-import Cart from './components/Cart.js';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Footer from './Footer.js';
+import Header from './Header.js';
+import Home from './Home.js';
+import Catalog from './Catalog.js';
+import ContactUs from './ContactUs.js';
+import Content from './Content';
+import '../css/App.css';
+import '../css/Footer.css';
+import Purchase from './Purchase.js';
+import ThankYouPurchase from './ThankYouPurchase.js';
+import ItemUpload from './ItemUpload.js';
+import Test from './Test.js';
+import Cart from './Cart.js';
+import CartEmpty from './CartEmpty.js';
 
 function App() {
 	return (
@@ -28,10 +29,12 @@ function App() {
 						<Route path="/thankyoupurchase" component={ThankYouPurchase} />
 						<Route path="/itemupload" component={ItemUpload} />
 						<Route path="/cart" component={Cart} />
+						<Route path="/cartempty" component={CartEmpty} />
 						<Route path="/test" component={Test} />
 					</Switch>
 				</Content>
 			</Router>
+			<Footer />
 		</div>
 	);
 }

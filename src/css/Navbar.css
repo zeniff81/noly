@@ -1,66 +1,47 @@
-/* Navbar.css */
 .navbar {
-	background: #feeafa;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 4px 2em;
-	height: 100%;
+	box-sizing: border-box;
+	flex-direction: row;
+	padding: 0 1em;
 }
 
-.navbar button {
-	background: none;
-	color: var(--primary);
-	font-size: 1em;
-	border: none;
-	box-shadow: 1px 1px 1px #ddd;
-	padding: 7px 10px;
+.navbar > div {
 }
 
-.navbar .logo {
-	display: flex;
-	gap: 4px;
+.Link {
 }
 
-.navbar .logo * {
-	text-decoration: none;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-	font-size: 1.5em;
+.navbar__logoContainer {
+	width: 60px;
 }
 
-.logo .habla {
-	color: var(--primary);
+.navbar__logo {
+	width: 60px;
+	height: auto;
 }
-.logo .con {
-	color: gray;
-}
-.logo .noly {
-	color: var(--secondary);
-}
-
 .navbar__search {
-	flex: 1;
 	margin: 0 1em;
+	flex: 3;
 }
-
 .navbar__input {
-	box-shadow: 1px 1px 5px #ddd;
-	border: none;
-	width: 100%;
+}
+.navbar__links {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 200px;
+	height: 100%;
+	flex: 2;
+}
+.navbar__links .Link {
+	background: var(--colorSecondary);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	flex: 40%;
+	margin: 1px;
 }
 
-@media screen and (max-width: 480px) {
-	.navbar__links {
-		justify-content: flex-end;
-		align-items: stretch;
-	}
-	.Link {
-		font-size: 12px;
-		display: flex;
-		justify-content: stretch;
-	}
-
-	.Link button {
-		width: 100%;
-	}
+.materialIcon {
 }

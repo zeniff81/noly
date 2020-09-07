@@ -1,9 +1,8 @@
 /* CatalogItem */
 
 .catalogItem {
-	background: #efd3d7;
-	height: 200px;
-	width: 200px;
+	height: 160px;
+	width: 160px;
 	margin: 4px;
 	position: relative;
 }
@@ -25,7 +24,7 @@
 	position: absolute;
 	top: 0;
 	right: 0;
-	height: 25%;
+	width: 64px;
 }
 
 .catalogItem__img {

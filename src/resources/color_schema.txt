@@ -1,5 +1,0 @@
-8e9aaf	gray blue
-cbc0d3	soft purple
-efd3d7	soft choco
-feeafa	soft pink
-dee2ff	soft blue

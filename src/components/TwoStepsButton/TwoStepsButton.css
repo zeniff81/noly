@@ -1,29 +1,39 @@
 .tsb {
-	border: 1px solid #000;
 	margin: 1em;
 	padding: 1em;
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 }
 
 .tsb__type-B {
 	display: flex;
 	flex-wrap: wrap;
+	flex-direction: row;
 }
 
 .tsb__button {
-	color: black;
 	background: greenyellow;
-	outline: none;
 	border-radius: 10px;
 	border: 1px solid white;
-	margin: 10px;
 	border: none;
-	flex: 25%;
 	box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+	color: black;
+	flex: 25%;
+	margin: 10px;
+	outline: none;
 	padding: 6px 20px;
 	transition: all 100ms;
+}
+
+.tsb__message {
+	color: white;
+}
+
+.tsb__button:hover {
+	transform: scale(1.1);
+	border-color: rgba(0, 0, 0, 0);
+	filter: brightness(80%);
 }
 
 .tsb__button--special {

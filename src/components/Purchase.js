@@ -1,10 +1,9 @@
 import React from 'react';
 import '../css/Purchase.css';
-import { useParams, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useState } from 'react';
 
 function Purchase({ match }) {
-	const { selectedImg } = useParams();
 	const [submitted, setSubmitted] = useState(false);
 
 	console.log('match', match);

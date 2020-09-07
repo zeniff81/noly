@@ -1,0 +1,24 @@
+.cartEmpty {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 10px;
+	margin: 20px;
+}
+
+.cartEmpty__image {
+	height: 200px;
+}
+
+.cartEmpty__h1 {
+	color: var(--primary);
+	font-size: 2em;
+}
+
+.cartEmpty__subtitle {
+	color: gray;
+	font-size: 1.5em;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	text-align: center;
+}

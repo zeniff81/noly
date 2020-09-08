@@ -1,12 +1,12 @@
-.hover:hover1 {
-	border-color: var(--colorPrimary);
-	background: white;
-	color: var(--colorPrimary);
+.hover:hover {
+	border: solid 1px var(--colorPrimary);
+
+	
 	transform: scale(1.05);
 	/* transition: transform 0.1s; */
 }
 
-.active:active1 {
+.active:active {
 	box-shadow: none;
 	transform: translate(1px, 2px);
 }

@@ -1,0 +1,20 @@
+.hablaConNolyBtn{
+    border: none;
+    background: var(--colorPrimary);
+    color: white;
+    border-radius: 10px;
+    margin: .5em;
+    padding: 1em;
+    outline: none;
+    
+}
+
+.hablaConNolyBtn:hover{
+    background: var(--colorPrimary50);
+    color: black;
+    transform: scale(1.1);
+}
+
+.hablaConNolyBtn:active{
+    transform: translate(1px, 1px);
+}

@@ -1,0 +1,22 @@
+/* ItemCardMenu */
+.itemCardMenu {
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+}
+
+
+.itemCardMenu button {
+	background: var(--colorPrimary);
+	color: white;
+	border: none;
+	outline: none;
+	height: 35px;
+	border-radius: 10px;
+	margin: 0 1em;
+	width: 110px;
+}
+
+.itemCardMenu :nth-child(3) {
+	background: var(--colorSecondary);
+}

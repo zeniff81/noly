@@ -1,12 +1,13 @@
 import React from 'react';
-import ItemUploader from './ItemUpload/ItemUpload';
+import '../css/Test.css';
+import ItemCardEdit from './ItemUpload/ItemCardEdit';
 
 function Test() {
-	return (
-		<div>
-			<ItemUploader />
-		</div>
-	);
+  return (
+    <div>
+      <ItemCardEdit />
+    </div>
+  );
 }
 
 export default Test;

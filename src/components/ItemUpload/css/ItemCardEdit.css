@@ -1,0 +1,27 @@
+.itemCardEdit {
+  margin: 1em;
+  background: white;
+  padding: 1em;
+  box-shadow: 1px 1px 5px #ddd;
+  border-radius: 20px;
+}
+
+.itemCardEdit__image {
+  height: 130px;
+  width: 130px;
+}
+
+.itemCardEdit__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.itemCardEdit__row > div {
+}
+
+.itemCardEdit__actions {
+  flex-direction: row;
+  justify-content: center;
+}

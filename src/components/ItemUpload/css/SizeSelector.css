@@ -1,0 +1,43 @@
+.sizeSelector__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sizeSelector__sizes {
+  display: flex;
+
+  align-items: center;
+}
+
+.sizeSelector__btn {
+  background: var(--colorSecondary);
+  border: none;
+  outline: none;
+  padding: 1em;
+  margin: 4px;
+  width: 40px;
+}
+
+.sizeSelector__title {
+  text-align: center;
+}
+
+.sizeSelector__sizes {
+}
+
+.sizeSelector input {
+  width: 100%;
+}
+
+.sizeSelector__input {
+  text-align: center;
+}
+
+.secondaryClass {
+  background: var(--colorSecondary);
+}
+
+.sizeSelector__selected {
+  border: 1px solid var(--colorPrimary);
+}

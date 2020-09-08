@@ -10,7 +10,7 @@ import '../css/App.css';
 import '../css/Footer.css';
 import Purchase from './Purchase.js';
 import ThankYouPurchase from './ThankYouPurchase.js';
-import ItemUpload from './ItemUpload.js';
+import ItemUpload from './ItemUpload/ItemUpload.js';
 import Test from './Test.js';
 import Cart from './Cart.js';
 import CartEmpty from './CartEmpty.js';

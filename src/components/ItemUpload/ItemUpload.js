@@ -3,20 +3,9 @@ import { useState } from 'react';
 import ItemCard from './ItemCard';
 import ProgressBar from '../ProgressBar';
 import './css/ItemUploader.css';
-import { projectStorage } from '../../firebase/config';
 import useStorageMultiple from './useStorageMultiple';
 import useFirestore from '../../firebase/useFirestore';
 import { v4 as uuidv4 } from 'uuid';
-
-const uploadFile = (newFiles) => {
-	if (newFiles === null) return;
-
-	const file = newFiles;
-	const storageRef = projectStorage.ref();
-	const fileRef = storageRef.child(file.name);
-
-	fileRef.put(file).then(() => console.log('file uploaded...'));
-};
 
 function ItemUploader() {
 	const [items, setItems] = useState(null);

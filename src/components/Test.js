@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemUploader from './ItemUploader/ItemUploader';
+import ItemUploader from './ItemUpload/ItemUpload';
 
 function Test() {
 	return (

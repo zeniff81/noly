@@ -1,9 +1,21 @@
+.cover {
+	background: var(--colorSecondary25);
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	position: absolute;
+	top: 0;
+}
+
 .itemCardEdit {
 	margin: 1em;
 	background: white;
 	padding: 1em;
 	box-shadow: 1px 1px 5px #ddd;
 	border-radius: 20px;
+	width: 80%;
+	position: fixed;
+	top: 100px;
 }
 
 .itemCardEdit input {
@@ -12,12 +24,20 @@
 	text-align: center;
 	box-shadow: 1px 1px 5px gray;
 	padding: 10px;
-	width: 300px;
+	width: 90%;
+}
+.itemCardEdit input {
+	border: solid 1px white;
+	transition: all 100ms;
 }
 
-.itemCardEdit input:hover {
+.itemCardEdit input:focus {
 	border-radius: 20px;
 	background: var(--colorPrimary25);
+	border: solid 1px var(--colorPrimary25);
+}
+.itemCardEdit input:hover {
+	border: solid 1px var(--colorPrimary);
 }
 
 .itemCardEdit__image {
@@ -31,11 +51,15 @@
 	align-items: center;
 	margin-bottom: 0.5em;
 }
+.rowHeader {
+	flex-direction: row;
+	justify-content: space-around;
+}
 
 .itemCardEdit__row > div {
 }
 
 .itemCardEdit__actions {
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 }

@@ -11,13 +11,17 @@ import useStorageMultiple from './useStorageMultiple';
 
 function ItemUploader() {
 	const [items, setItems] = useState(null);
+	const [alert, setAlert] = useState(null);
 	const [showEdit, setShowEdit] = useState(false);
 	const { docs } = useFirestore('unpublished');
-	const { progress } = useStorageMultiple(items);
+	const { progress } = useStorageMultiple([alert, items]);
 	const inputRef = useRef();
 
 	const onChangeHandler = (e) => {
 		const files = e.target.files;
+		if (!files) return;
+
+		setAlert(Date.now());
 		setItems(files);
 	};
 
@@ -35,6 +39,7 @@ function ItemUploader() {
 					Subir artículos
 				</button>
 			</div>
+
 			{/* ProgressBar */}
 			{items && <ProgressBar progress={progress} />}
 
@@ -45,6 +50,7 @@ function ItemUploader() {
 						<ItemCard key={uuidv4()} doc={doc} setShowEdit={setShowEdit} />
 					))}
 			</div>
+
 			{/* ItemCardEdit */}
 			{showEdit && <ItemCardEdit setShowEdit={setShowEdit} />}
 		</div>

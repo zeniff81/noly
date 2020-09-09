@@ -2,14 +2,25 @@ import React, { useState } from 'react';
 import './css/ItemCardEdit.css';
 import Button from '../common/Button';
 import SizeSelector from './SizeSelector';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-function ItemCardEdit({ setShowEdit }) {
+function ItemCardEdit({ setShowEdit, currentDoc }) {
 	const [state, setState] = useState({
 		title: 'newtitle',
 		description: 'newDesc',
 		price: 'newPrice',
 		size: 'newSize',
 	});
+
+	useEffect(() => {
+		setState({
+			title: currentDoc.title,
+			description: currentDoc.description,
+			price: currentDoc.price,
+			size: currentDoc.size,
+		});
+	}, []);
 
 	const setSize = (newSize) => {
 		setState({ ...state, size: newSize });
@@ -44,19 +55,19 @@ function ItemCardEdit({ setShowEdit }) {
 					</div>
 				</div>
 
-				<div className="itemCardEdit__row" value={state.title}>
+				<div className="itemCardEdit__row">
 					<div>Título</div>
-					<input type="text" />
+					<input type="text" value={state.title} />
 				</div>
 
-				<div className="itemCardEdit__row" value={state.description}>
+				<div className="itemCardEdit__row">
 					<div>Descripción</div>
-					<input type="text" />
+					<input type="text" value={state.description} />
 				</div>
 
-				<div className="itemCardEdit__row" value={state.price}>
+				<div className="itemCardEdit__row">
 					<div>Precio</div>
-					<input type="text" />
+					<input type="text" value={state.price} />
 				</div>
 
 				<div className="itemCardEdit__row">
@@ -67,4 +78,10 @@ function ItemCardEdit({ setShowEdit }) {
 	);
 }
 
-export default ItemCardEdit;
+const mapStateToProps = (state) => {
+	return {
+		currentDoc: state.itemUpload.currentDoc,
+	};
+};
+
+export default connect(mapStateToProps)(ItemCardEdit);

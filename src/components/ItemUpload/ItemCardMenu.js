@@ -2,7 +2,7 @@ import React from 'react';
 import './css/ItemCardMenu.css';
 import '../../css/global.css';
 
-const ItemCardMenu = ({ setShowMenu, setShowEdit, doc }) => {
+const ItemCardMenu = ({ setShowMenu, setShowEdit, setCurrentDoc, doc }) => {
 	const deselectClick = (e) => {
 		e.stopPropagation();
 		setShowMenu(false);
@@ -11,6 +11,7 @@ const ItemCardMenu = ({ setShowMenu, setShowEdit, doc }) => {
 		e.stopPropagation();
 		setShowEdit(true);
 	};
+
 	return (
 		<div className="itemCardMenu">
 			<button

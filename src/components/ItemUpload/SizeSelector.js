@@ -1,10 +1,8 @@
 import './css/SizeSelector.css';
 import React from 'react';
-import Button from '../common/Button';
 import { useState } from 'react';
 
 function SizeSelector({ setSize }) {
-	const [highlighted, setHighlighted] = useState(0);
 	const [selected, setSelected] = useState('S');
 	const buttonClick = (e) => {
 		setSize(e.target.innerText);
@@ -48,25 +46,7 @@ function SizeSelector({ setSize }) {
 	);
 }
 
-const ButtonWithHighlight = ({ button: NewButton, isHightlighted }) => {
-	const [highlighted, setHighlighted] = useState(false);
-	const toggleHighlight = () => {
-		setHighlighted(!highlighted);
-	};
-
-	return (
-		<div
-			className="buttonWithHighlight"
-			style={{
-				border: 'solid 1px',
-				borderColor: highlighted ? 'blue' : 'white',
-				padding: 'none',
-			}}
-			onClick={toggleHighlight}
-		>
-			{NewButton}
-		</div>
-	);
-};
-
 export default SizeSelector;
+
+// TODO ItemCard is re-rendering when setCurrentDoc is used
+// to let ItemCardEdit what doc to work with

@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { projectStorage, projectFirestore } from '../../firebase/config';
 
-const useStorageMultiple = (files) => {
+const useStorageMultiple = ([alert, files]) => {
 	const [progress, setProgress] = useState(0);
 	const [error, setError] = useState(null);
 	const [imageUrl, setImageUrl] = useState(null);
 
 	useEffect(() => {
 		if (!files) return;
+		// alert('use Storage Multiple');
 
 		for (let f of files) {
 			const storageRef = projectStorage.ref(f.name);
@@ -30,12 +31,13 @@ const useStorageMultiple = (files) => {
 						title: 'new title',
 						price: 0,
 						imageUrl: currentUrl,
+						createdAt: Date.now(),
 					});
 					setImageUrl(currentUrl);
 				}
 			);
 		}
-	}, [files]);
+	}, [alert, files]);
 
 	return { progress, error, imageUrl };
 };

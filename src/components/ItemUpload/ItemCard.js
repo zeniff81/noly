@@ -3,15 +3,21 @@ import './css/ItemCard.css';
 import '../../css/global.css';
 import { useState } from 'react';
 import ItemCardMenu from './ItemCardMenu';
-import ItemCardEdit from './ItemCardEdit';
+import { connect } from 'react-redux';
+import { setCurrentDoc } from '../../redux/itemUpload/actions';
 
-function ItemCard({ setShowEdit, doc }) {
+function ItemCard({ setShowEdit, setCurrentDoc, doc }) {
 	const [showMenu, setShowMenu] = useState(false);
+
+	const itemCardClick = () => {
+		setCurrentDoc(doc);
+		setShowMenu(!showMenu);
+	};
 
 	return (
 		<div
 			className={`itemCard ${showMenu ? 'itemCard__selected' : ''} hover`}
-			onClick={() => setShowMenu(!showMenu)}
+			onClick={itemCardClick}
 		>
 			<div className="itemCard__row">
 				<div className="itemCard__imageContainer">
@@ -31,7 +37,11 @@ function ItemCard({ setShowEdit, doc }) {
 			<div className="itemCard__row">
 				<div className="itemCard__menu">
 					{showMenu ? (
-						<ItemCardMenu setShowMenu={setShowMenu} setShowEdit={setShowEdit} />
+						<ItemCardMenu
+							setShowMenu={setShowMenu}
+							setShowEdit={setShowEdit}
+							doc={doc}
+						/>
 					) : (
 						<div style={{ color: 'gray', fontStyle: 'italic' }}>
 							Seleccionar para ver opciones
@@ -43,4 +53,10 @@ function ItemCard({ setShowEdit, doc }) {
 	);
 }
 
-export default ItemCard;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setCurrentDoc: (doc) => dispatch(setCurrentDoc(doc)),
+	};
+};
+
+export default connect(null, mapDispatchToProps)(ItemCard);

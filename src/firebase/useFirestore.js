@@ -7,11 +7,17 @@ const useFirestore = (collection = 'ropa') => {
 
 	useEffect(() => {
 		const cleanup = projectFirestore
+
 			.collection(collection)
+			.orderBy('createdAt')
 			.onSnapshot((snap) => {
 				let documents = [];
+
 				snap.docs.forEach((doc) =>
-					documents.push({ ...doc.data(), id: doc.id })
+					documents.push({
+						...doc.data(),
+						id: doc.id,
+					})
 				);
 				setDocs(documents);
 			});

@@ -4,3 +4,10 @@ export const setCurrentDoc = (doc) => {
 		payload: doc,
 	};
 };
+
+export const updateCurrentDoc = (doc) => {
+	return {
+		type: 'UPDATE_CURRENT_DOC',
+		payload: doc,
+	};
+};

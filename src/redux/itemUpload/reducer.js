@@ -10,6 +10,11 @@ const itemUploadReducer = (state = initialState, action) => {
 				currentDoc: action.payload,
 			};
 
+		case 'UPDATE_CURRENT_DOC':
+			return {
+				...action.payload,
+			};
+
 		default:
 			return state;
 	}

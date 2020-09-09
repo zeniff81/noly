@@ -7,21 +7,21 @@ import ItemCardEdit from './ItemCardEdit';
 import ProgressBar from '../ProgressBar';
 import React from 'react';
 import useFirestore from '../../firebase/useFirestore';
-import useStorageMultiple from './useStorageMultiple';
+import useStorage from '../../firebase/useStorage';
 
 function ItemUploader() {
 	const [items, setItems] = useState(null);
-	const [alert, setAlert] = useState(null);
+	const [alertNewUpload, setAlertNewUpload] = useState(null);
 	const [showEdit, setShowEdit] = useState(false);
 	const { docs } = useFirestore('unpublished');
-	const { progress } = useStorageMultiple([alert, items]);
+	const { progress } = useStorage([alertNewUpload, items]);
 	const inputRef = useRef();
 
 	const onChangeHandler = (e) => {
 		const files = e.target.files;
 		if (!files) return;
 
-		setAlert(Date.now());
+		setAlertNewUpload(Date.now());
 		setItems(files);
 	};
 

@@ -1,26 +1,39 @@
-import React, { useState } from 'react';
 import './css/ItemCardEdit.css';
-import Button from '../common/Button';
-import SizeSelector from './SizeSelector';
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { updateCurrentDoc } from '../../redux/itemUpload/actions';
+import { useEffect } from 'react';
+import Button from '../common/Button';
+import React, { useState } from 'react';
+import SizeSelector from './SizeSelector';
 
-function ItemCardEdit({ setShowEdit, currentDoc }) {
+function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDoc }) {
 	const [state, setState] = useState({
-		title: 'newtitle',
-		description: 'newDesc',
-		price: 'newPrice',
-		size: 'newSize',
+		title: null,
+		description: null,
+		price: null,
+		size: null,
 	});
 
-	useEffect(() => {
+	const [title, setTitle] = useState('initial title');
+
+	// useEffect(() => {
+	// 	setState({
+	// 		title: currentDoc.title,
+	// 		description: currentDoc.description,
+	// 		price: currentDoc.price,
+	// 		size: currentDoc.size,
+	// 	});
+	// }, []);
+
+	const updateValue = (e) => {
+		const property = e.target.name;
+		const value = e.target.value;
+
 		setState({
-			title: currentDoc.title,
-			description: currentDoc.description,
-			price: currentDoc.price,
-			size: currentDoc.size,
+			...state,
+			[property]: value,
 		});
-	}, []);
+	};
 
 	const setSize = (newSize) => {
 		setState({ ...state, size: newSize });
@@ -32,12 +45,13 @@ function ItemCardEdit({ setShowEdit, currentDoc }) {
 		if (allowToHide.includes(e.target.id)) setShowEdit(false);
 	};
 
-	const onOkClick = () => {
-		//onOkClick
+	const saveChanges = () => {
+		//updateCurrentDoc(currentDoc);
 	};
 
 	return (
 		<div className="cover" id="itemCardEditCover" onClick={hideItemCardEdit}>
+			{/* itemCardEditWrow */}
 			<div className="itemCardEdit">
 				<div className="itemCardEdit__row rowHeader">
 					<img
@@ -45,8 +59,10 @@ function ItemCardEdit({ setShowEdit, currentDoc }) {
 						alt=""
 						className="itemCardEdit__image"
 					/>
+
+					{/* itemCardEditWrow */}
 					<div className="itemCardEdit__row itemCardEdit__actions">
-						<Button onClick={onOkClick} caption="Aceptar" />
+						<Button onClick={saveChanges} caption="Aceptar" />
 						<Button
 							onClick={hideItemCardEdit}
 							caption="Cancelar"
@@ -55,19 +71,35 @@ function ItemCardEdit({ setShowEdit, currentDoc }) {
 					</div>
 				</div>
 
+				{/* itemCardEditWrow */}
 				<div className="itemCardEdit__row">
 					<div>Título</div>
-					<input type="text" value={state.title} />
+					<input
+						type="text"
+						value={state.title}
+						name="title"
+						onChange={updateValue}
+					/>
 				</div>
 
 				<div className="itemCardEdit__row">
 					<div>Descripción</div>
-					<input type="text" value={state.description} />
+					<input
+						type="text"
+						value={state.description}
+						name="description"
+						onChange={updateValue}
+					/>
 				</div>
 
 				<div className="itemCardEdit__row">
 					<div>Precio</div>
-					<input type="text" value={state.price} />
+					<input
+						type="text"
+						value={state.price}
+						name="price"
+						onChange={updateValue}
+					/>
 				</div>
 
 				<div className="itemCardEdit__row">
@@ -78,10 +110,16 @@ function ItemCardEdit({ setShowEdit, currentDoc }) {
 	);
 }
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+		updateCurrentDoc: (doc) => dispatch(updateCurrentDoc(doc)),
+	};
+};
+
 const mapStateToProps = (state) => {
 	return {
 		currentDoc: state.itemUpload.currentDoc,
 	};
 };
 
-export default connect(mapStateToProps)(ItemCardEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemCardEdit);

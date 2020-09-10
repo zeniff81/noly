@@ -12,7 +12,7 @@ import useStorage from '../../firebase/useStorage';
 function ItemUploader() {
 	const [items, setItems] = useState(null);
 	const [alertNewUpload, setAlertNewUpload] = useState(null);
-	const [showEdit, setShowEdit] = useState(false);
+	const [currenDocId, setCurrenDocId] = useState(false);
 	const { docs } = useFirestore('unpublished');
 	const { progress } = useStorage([alertNewUpload, items]);
 	const inputRef = useRef();
@@ -45,11 +45,13 @@ function ItemUploader() {
 			<div className="itemUploader__itemList">
 				{docs &&
 					docs.map((doc) => (
-						<ItemCard key={uuidv4()} doc={doc} setShowEdit={setShowEdit} />
+						<ItemCard key={uuidv4()} doc={doc} setShowEdit={setCurrenDocId} />
 					))}
 			</div>
 			{/* ItemCardEdit */}
-			{showEdit && <ItemCardEdit setShowEdit={setShowEdit} />}
+			{currenDocId && (
+				<ItemCardEdit setShowEdit={setCurrenDocId} currentDocId={currenDocId} />
+			)}
 		</div>
 	);
 }

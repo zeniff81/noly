@@ -12,6 +12,10 @@ const ItemCardMenu = ({ setShowMenu, setShowEdit, setCurrentDoc, doc }) => {
 		setShowEdit(true);
 	};
 
+	const publishItem = (doc) => {
+		// something
+	};
+
 	return (
 		<div className="itemCardMenu">
 			<button
@@ -23,7 +27,7 @@ const ItemCardMenu = ({ setShowMenu, setShowEdit, setCurrentDoc, doc }) => {
 			<button onClick={editClick} className="itemCardmenu__edit hover active">
 				Editar
 			</button>
-			<button onClick={editClick} className="itemCardmenu__edit hover active">
+			<button onClick={publishItem} className="itemCardmenu__edit hover active">
 				Publicar
 			</button>
 		</div>

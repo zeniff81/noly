@@ -4,11 +4,12 @@ import { projectFirestore } from '../firebase/config';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import ItemCardEdit from './ItemUpload/ItemCardEdit';
+import { v4 as uuidv4 } from 'uuid';
 
 function Test() {
 	const [currentDoc, setCurrentDoc] = useState(null);
 	const [arrId, setArrId] = useState([]);
-	const [currentId, updateCurrentId] = useState('initial');
+	const [currenDocId, updateCurrentId] = useState('33M1k7FhMHQs5SBrA0Kk');
 
 	useEffect(() => {
 		projectFirestore
@@ -23,14 +24,15 @@ function Test() {
 			});
 
 		projectFirestore
-			.doc('unpublished/33M1k7FhMHQs5SBrA0Kk')
+			.doc('unpublished/' + currenDocId)
 			.get()
 			.then((doc) => {
 				const data = doc.data();
+				console.log(data);
 				setCurrentDoc({ ...data });
 			})
 			.catch((err) => console.log(err));
-	}, []);
+	}, [currenDocId]);
 
 	const setCurrentId = (e) => {
 		updateCurrentId(e.target.innerText);
@@ -41,12 +43,16 @@ function Test() {
 			<label htmlFor="">Array IDs</label>
 			<div>
 				{arrId.map((id) => (
-					<li onClick={setCurrentId}>{id}</li>
+					<li key={uuidv4()} onClick={setCurrentId}>
+						{id}
+					</li>
 				))}
 				<hr />
-				<div>Current id: {currentId}</div>
+				<div>Current id: {currenDocId}</div>
 			</div>
-			{currentDoc && <ItemCardEdit showEdit={null} currentDocId={currentId} />};
+			{currentDoc && (
+				<ItemCardEdit showEdit={null} currentDocId={currenDocId} />
+			)}
 		</div>
 	);
 }

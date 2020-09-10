@@ -39,7 +39,7 @@ function ItemCard({ setShowEdit, setCurrentDoc, doc }) {
 					{showMenu ? (
 						<ItemCardMenu
 							setShowMenu={setShowMenu}
-							setShowEdit={setShowEdit}
+							setShowEdit={() => setShowEdit(doc.id)}
 							doc={doc}
 						/>
 					) : (

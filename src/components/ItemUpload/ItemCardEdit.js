@@ -5,25 +5,30 @@ import { useEffect } from 'react';
 import Button from '../common/Button';
 import React, { useState } from 'react';
 import SizeSelector from './SizeSelector';
+import { projectFirestore } from '../../firebase/config';
 
-function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDoc }) {
+function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDocId }) {
 	const [state, setState] = useState({
-		title: null,
-		description: null,
-		price: null,
-		size: null,
+		title: 'title - initial',
+		description: 'description - initial',
+		price: 'price - initial',
+		size: 'L',
 	});
 
-	const [title, setTitle] = useState('initial title');
-
 	useEffect(() => {
-		setState({
-			title: currentDoc.title,
-			description: currentDoc.description,
-			price: currentDoc.price,
-			size: currentDoc.size,
-		});
-	}, []);
+		projectFirestore
+			.doc('unpublished/' + currentDocId)
+			.get()
+			.then((doc) => {
+				const data = doc.data();
+				setState({
+					title: data.title,
+					description: data.description,
+					price: data.price,
+					size: data.size,
+				});
+			});
+	}, [currentDocId]);
 
 	const updateValue = (e) => {
 		const property = e.target.name;
@@ -36,17 +41,36 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDoc }) {
 	};
 
 	const setSize = (newSize) => {
-		setState({ ...state, size: newSize });
+		//setState({ ...state, size: newSize });
 	};
 
 	const hideItemCardEdit = (e) => {
-		const allowToHide = ['itemCardEditCancel', 'itemCardEditCover'];
+		const allowToHide = [
+			'itemCardEditCancel',
+			'itemCardEditCover',
+			'itemCardEditSave',
+		];
 
 		if (allowToHide.includes(e.target.id)) setShowEdit(false);
 	};
 
-	const saveChanges = () => {
-		updateCurrentDoc(currentDoc);
+	const saveChanges = (e) => {
+		e.persist();
+		const event = e;
+
+		console.log(event.target.id);
+		projectFirestore
+			.doc('unpublished/' + currentDocId)
+			.get()
+			.then((doc) => {
+				const data = doc.data();
+
+				projectFirestore.doc('unpublished/' + currentDocId).set({
+					...data,
+					...state,
+				});
+			})
+			.then(() => hideItemCardEdit(event));
 	};
 
 	return (
@@ -62,7 +86,11 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDoc }) {
 
 					{/* itemCardEditWrow */}
 					<div className="itemCardEdit__row itemCardEdit__actions">
-						<Button onClick={saveChanges} caption="Aceptar" />
+						<Button
+							onClick={saveChanges}
+							id="itemCardEditSave"
+							caption="Aceptar"
+						/>
 						<Button
 							onClick={hideItemCardEdit}
 							caption="Cancelar"

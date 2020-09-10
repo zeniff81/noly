@@ -1,5 +1,6 @@
 .itemCard {
 	box-shadow: 1px 1px 5px #bbb;
+	background: white;
 	display: flex;
 	flex-direction: column;
 	max-width: 600px;
@@ -11,55 +12,53 @@
 .itemCard__row {
 	overflow: hidden;
 	display: flex;
-	
-	
 }
 
-.itemCard__imageContainer {	
+.itemCard__imageContainer {
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
 	height: 100px;
-	width: 100px;		
+	width: 100px;
 }
 
 .itemCard__image {
 	height: 100px;
-	width: 100px;	
+	width: 100px;
 }
 
 .itemCard__info {
 	padding: 10px;
 	flex: 1;
-	
+	font-size: 1.1em;
 }
 
 .itemCard__title {
 	font-family: var(--fontSecondary);
 	color: var(--colorPrimary);
 	font-weight: 800;
+	font-size: 1.1em;
 }
 .itemCard__desc {
 }
 .itemCard__price {
-
 }
 
-.itemCard__two-in-a-row{
+.itemCard__two-in-a-row {
 	display: flex;
 	gap: 1em;
 }
 .itemCard__size {
 }
 
-.itemCard__selected{
-	background: var(--colorPrimary25)
+.itemCard__selected {
+	background: var(--colorPrimary25);
 }
 
-.itemCard__menu {	
+.itemCard__menu {
 	margin-top: 1em;
 	height: 40px;
-line-height: 40px;
-	width: 100%;;
+	line-height: 40px;
+	width: 100%;
 	text-align: center;
 }

@@ -16,14 +16,14 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDoc }) {
 
 	const [title, setTitle] = useState('initial title');
 
-	// useEffect(() => {
-	// 	setState({
-	// 		title: currentDoc.title,
-	// 		description: currentDoc.description,
-	// 		price: currentDoc.price,
-	// 		size: currentDoc.size,
-	// 	});
-	// }, []);
+	useEffect(() => {
+		setState({
+			title: currentDoc.title,
+			description: currentDoc.description,
+			price: currentDoc.price,
+			size: currentDoc.size,
+		});
+	}, []);
 
 	const updateValue = (e) => {
 		const property = e.target.name;
@@ -46,7 +46,7 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDoc }) {
 	};
 
 	const saveChanges = () => {
-		//updateCurrentDoc(currentDoc);
+		updateCurrentDoc(currentDoc);
 	};
 
 	return (
@@ -73,7 +73,7 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDoc }) {
 
 				{/* itemCardEditWrow */}
 				<div className="itemCardEdit__row">
-					<div>Título</div>
+					<label>Título</label>
 					<input
 						type="text"
 						value={state.title}
@@ -83,7 +83,7 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDoc }) {
 				</div>
 
 				<div className="itemCardEdit__row">
-					<div>Descripción</div>
+					<label>Descripción</label>
 					<input
 						type="text"
 						value={state.description}
@@ -93,7 +93,7 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDoc }) {
 				</div>
 
 				<div className="itemCardEdit__row">
-					<div>Precio</div>
+					<label>Precio</label>
 					<input
 						type="text"
 						value={state.price}
@@ -103,7 +103,7 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDoc }) {
 				</div>
 
 				<div className="itemCardEdit__row">
-					<SizeSelector setSize={setSize} />
+					<SizeSelector setSize={setSize} size={state.size} />
 				</div>
 			</div>
 		</div>
@@ -118,7 +118,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
 	return {
-		currentDoc: state.itemUpload.currentDoc,
+		//		currentDoc: state.itemUpload.currentDoc,
 	};
 };
 

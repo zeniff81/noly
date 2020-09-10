@@ -1,13 +1,17 @@
 import './css/SizeSelector.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
-function SizeSelector({ setSize }) {
-	const [selected, setSelected] = useState('S');
+function SizeSelector({ setSize, size }) {
+	const [selected, setSelected] = useState(size);
 	const buttonClick = (e) => {
 		setSize(e.target.innerText);
 		setSelected(e.target.innerText);
 	};
+
+	useEffect(() => {
+		setSelected(size);
+	}, [size]);
 
 	const getSelected = (innerText) => {
 		return innerText === selected && 'sizeSelector__selected';

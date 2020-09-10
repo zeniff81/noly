@@ -39,10 +39,8 @@ function ItemUploader() {
 					Subir artículos
 				</button>
 			</div>
-
 			{/* ProgressBar */}
 			{items && <ProgressBar progress={progress} />}
-
 			{/* ItemList */}
 			<div className="itemUploader__itemList">
 				{docs &&
@@ -50,7 +48,6 @@ function ItemUploader() {
 						<ItemCard key={uuidv4()} doc={doc} setShowEdit={setShowEdit} />
 					))}
 			</div>
-
 			{/* ItemCardEdit */}
 			{showEdit && <ItemCardEdit setShowEdit={setShowEdit} />}
 		</div>

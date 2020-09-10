@@ -6,7 +6,6 @@ import useFirestore from '../firebase/useFirestore';
 import { useParams } from 'react-router-dom';
 
 function Catalog() {
-	alert('...created');
 	const [selected, setSelected] = useState(null);
 	const { id } = useParams();
 	const { docs } = useFirestore(id);

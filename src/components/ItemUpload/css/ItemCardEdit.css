@@ -18,17 +18,22 @@
 	top: 100px;
 }
 
-.itemCardEdit input {
-	outline: none;
-	border: none;
-	text-align: center;
-	box-shadow: 1px 1px 5px gray;
-	padding: 10px;
+.itemCardEdit label {
 	width: 90%;
+	text-align: left;
+	color: gray;
 }
 .itemCardEdit input {
+	border: none;
 	border: solid 1px white;
+	box-shadow: 1px 1px 5px #ddd;
+	font-size: 1.2em;
+	margin-bottom: 0.5em;
+	outline: none;
+	padding: 0px;
+	text-align: center;
 	transition: all 100ms;
+	width: 90%;
 }
 
 .itemCardEdit input:focus {

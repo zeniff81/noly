@@ -12,7 +12,7 @@ const itemUploadReducer = (state = initialState, action) => {
 
 		case 'UPDATE_CURRENT_DOC':
 			return {
-				...action.payload,
+				return: state,
 			};
 
 		default:

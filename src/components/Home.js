@@ -10,7 +10,7 @@ function Home() {
 				{/* hogar */}
 				<Link to="/catalog/hogar" className="Link">
 					<div className="home__link">
-						<div className="home__title">Hogar</div>
+						<div className="home__title">Hogares</div>
 						<div className="home__subtitle">
 							colchas, sábanas, almohadas, cortinas
 						</div>

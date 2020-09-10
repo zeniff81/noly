@@ -1,3 +1,5 @@
+import useFirestore from '../../firebase/useFirestore';
+
 export const setCurrentDoc = (doc) => {
 	return {
 		type: 'SET_CURRENT_DOC',
@@ -6,8 +8,5 @@ export const setCurrentDoc = (doc) => {
 };
 
 export const updateCurrentDoc = (doc) => {
-	return {
-		type: 'UPDATE_CURRENT_DOC',
-		payload: doc,
-	};
+	return function (dispatch) {};
 };

@@ -68,3 +68,15 @@
 	flex-direction: column;
 	justify-content: center;
 }
+
+select {
+	border: none;
+	padding: 4px 10px;
+	color: var(--colorPrimary);
+	font-size: 1.2em;
+}
+
+select:hover {
+	background: var(--colorPrimary);
+	color: white;
+}

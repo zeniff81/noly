@@ -67,7 +67,7 @@ function Cart({ cartItems, totals, setShipping, removeFromCart }) {
 
 			<CartCustInfo />
 			<div className="cart__actions">
-				<button className="cart__purchase">COMPRAR</button>
+				<button className="cart__purchase hover active">COMPRAR</button>
 			</div>
 		</div>
 	);

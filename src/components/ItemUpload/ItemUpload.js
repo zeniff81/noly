@@ -39,8 +39,24 @@ function ItemUploader() {
 					Subir artículos
 				</button>
 			</div>
+
+			{/* empty list  */}
+			{docs.length === 0 && (
+				<div className="emptyList">
+					<h1>Todos los artículos han sido publicados!</h1>
+					<h3>
+						Usa el botón{' '}
+						<span style={{ color: 'var(--colorPrimary)' }}>
+							Subir artículos
+						</span>{' '}
+						para publicar más.
+					</h3>
+				</div>
+			)}
+
 			{/* ProgressBar */}
 			{items && <ProgressBar progress={progress} />}
+
 			{/* ItemList */}
 			<div className="itemUploader__itemList">
 				{docs &&
@@ -48,6 +64,7 @@ function ItemUploader() {
 						<ItemCard key={uuidv4()} doc={doc} setShowEdit={setCurrenDocId} />
 					))}
 			</div>
+
 			{/* ItemCardEdit */}
 			{currenDocId && (
 				<ItemCardEdit setShowEdit={setCurrenDocId} currentDocId={currenDocId} />

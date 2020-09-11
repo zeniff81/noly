@@ -51,6 +51,12 @@
 .itemCard__size {
 }
 
+.itemCard__category {
+	border: solid 1px var(--colorPrimary);
+	border-radius: 10px;
+	padding: 0 4px;
+}
+
 .itemCard__selected {
 	background: var(--colorPrimary25);
 }

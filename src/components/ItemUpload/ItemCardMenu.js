@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/ItemCardMenu.css';
 import '../../css/global.css';
+import { projectFirestore } from '../../firebase/config';
 
 const ItemCardMenu = ({ setShowMenu, setShowEdit, setCurrentDoc, doc }) => {
 	const deselectClick = (e) => {
@@ -12,8 +13,22 @@ const ItemCardMenu = ({ setShowMenu, setShowEdit, setCurrentDoc, doc }) => {
 		setShowEdit(true);
 	};
 
-	const publishItem = (doc) => {
-		// something
+	const publishItem = (e) => {
+		e.stopPropagation();
+		console.log(doc);
+
+		projectFirestore
+			.collection(doc.category)
+			.add({
+				...doc,
+			})
+			.then(() => {
+				projectFirestore
+					.doc(`unpublished/${doc.id}`)
+					.delete()
+					.then(() => console.log('deleted'))
+					.catch((error) => console.log(error));
+			});
 	};
 
 	return (

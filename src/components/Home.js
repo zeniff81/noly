@@ -26,10 +26,10 @@ function Home() {
 				</Link>
 
 				{/* colchas */}
-				<Link to="/catalog/interiores" className="Link">
+				<Link to="/catalog/cortinas" className="Link">
 					<div className="home__link">
-						<div className="home__title">Interiores</div>
-						<div className="home__subtitle">Manualidades, decoración, etc.</div>
+						<div className="home__title">cortinas</div>
+						<div className="home__subtitle">dobles, triples, etc</div>
 					</div>
 				</Link>
 			</div>

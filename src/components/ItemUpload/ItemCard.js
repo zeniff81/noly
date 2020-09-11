@@ -5,13 +5,23 @@ import { useState } from 'react';
 import ItemCardMenu from './ItemCardMenu';
 import { connect } from 'react-redux';
 import { setCurrentDoc } from '../../redux/itemUpload/actions';
+import { useEffect } from 'react';
 
 function ItemCard({ setShowEdit, setCurrentDoc, doc }) {
 	const [showMenu, setShowMenu] = useState(false);
+	const [selected, setSelected] = useState(null);
+
+	useEffect(() => {
+		setSelected(doc.category);
+	}, [doc]);
 
 	const itemCardClick = () => {
 		setCurrentDoc(doc);
 		setShowMenu(!showMenu);
+	};
+
+	const getSelected = (value) => {
+		return value === selected;
 	};
 
 	return (
@@ -26,9 +36,11 @@ function ItemCard({ setShowEdit, setCurrentDoc, doc }) {
 				<div className="itemCard__info">
 					<div className="itemCard__title">{doc.title}</div>
 					<div className="itemCard__desc">{doc.description}</div>
+
 					<div className="itemCard__two-in-a-row">
 						<div className="itemCard__price">{doc.price}</div>
 						<div className="itemCard__size">{doc.size}</div>
+						<div className="itemCard__category">{doc.category}</div>
 					</div>
 				</div>
 			</div>

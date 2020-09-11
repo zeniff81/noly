@@ -10,6 +10,8 @@ function Catalog() {
 	const { id } = useParams();
 	const { docs } = useFirestore(id);
 
+	console.log(id);
+
 	return (
 		<div className="catalog">
 			{docs.map((doc) => {

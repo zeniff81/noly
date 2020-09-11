@@ -13,20 +13,25 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDocId }) {
 		description: 'description - initial',
 		price: 'price - initial',
 		size: 'L',
+		cateory: 'category - initial',
 	});
 
 	useEffect(() => {
+		//get data
 		projectFirestore
 			.doc('unpublished/' + currentDocId)
 			.get()
 			.then((doc) => {
 				const data = doc.data();
 				setState({
-					title: data.title,
+					category: data.category,
 					description: data.description,
+					imageUrl: data.imageUrl,
 					price: data.price,
 					size: data.size,
+					title: data.title,
 				});
+				console.log(data);
 			});
 	}, [currentDocId]);
 
@@ -73,16 +78,16 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDocId }) {
 			.then(() => hideItemCardEdit(event));
 	};
 
+	const getSelected = (value) => {
+		return state.category === value;
+	};
+
 	return (
 		<div className="cover" id="itemCardEditCover" onClick={hideItemCardEdit}>
 			{/* itemCardEditWrow */}
 			<div className="itemCardEdit">
 				<div className="itemCardEdit__row rowHeader">
-					<img
-						src={require('../../resources/campo.png')}
-						alt=""
-						className="itemCardEdit__image"
-					/>
+					<img src={state.imageUrl} alt="" className="itemCardEdit__image" />
 
 					{/* itemCardEditWrow */}
 					<div className="itemCardEdit__row itemCardEdit__actions">
@@ -96,6 +101,19 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDocId }) {
 							caption="Cancelar"
 							id="itemCardEditCancel"
 						/>
+
+						<select
+							name="category"
+							id="category"
+							value={state.category}
+							onChange={updateValue}
+						>
+							<option value="ropa">Ropa</option>
+							<option value="colchas">Colchas</option>
+							<option value="hogar">Hogar</option>
+							<option value="cortinas">Cortinas</option>
+							<option value="otros">Otros</option>
+						</select>
 					</div>
 				</div>
 

@@ -100,7 +100,6 @@
 }
 
 .cart__actions {
-	border: 1px solid #000;
 	margin-bottom: 1em;
 }
 
@@ -169,5 +168,19 @@
 }
 
 .cart__purchase {
+	background: var(--colorSecondary);
+	color: white;
+	border: none;
+	border-radius: 20px;
 	padding: 1em;
+	outline: none;
+}
+
+.cart__purchase:hover {
+	background: var(--colorPrimary);
+	color: white;
+}
+.cart__purchase {
+}
+.cart__purchase {
 }

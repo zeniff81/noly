@@ -30,6 +30,7 @@ function CatalogModal(props) {
 			route: null,
 		},
 		continueBrowsing: {
+			actions: hideModal,
 			route: null,
 		},
 		goToCart: {

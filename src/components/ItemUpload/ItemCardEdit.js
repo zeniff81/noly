@@ -12,8 +12,9 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDocId }) {
 		title: 'title - initial',
 		description: 'description - initial',
 		price: 'price - initial',
-		size: 'L',
-		cateory: 'category - initial',
+		size: 'S',
+		category: 'category - initial',
+		imageUrl: '',
 	});
 
 	useEffect(() => {
@@ -25,8 +26,11 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDocId }) {
 				const data = doc.data();
 				setState({
 					category: data.category,
+					createdAt: data.createdAt,
 					description: data.description,
 					imageUrl: data.imageUrl,
+					imageUrl: data.imageUrl,
+					isNew: data.isNew,
 					price: data.price,
 					size: data.size,
 					title: data.title,
@@ -46,7 +50,7 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDocId }) {
 	};
 
 	const setSize = (newSize) => {
-		//setState({ ...state, size: newSize });
+		setState({ ...state, size: newSize });
 	};
 
 	const hideItemCardEdit = (e) => {
@@ -62,18 +66,18 @@ function ItemCardEdit({ setShowEdit, updateCurrentDoc, currentDocId }) {
 	const saveChanges = (e) => {
 		e.persist();
 		const event = e;
-
 		console.log(event.target.id);
+
 		projectFirestore
 			.doc('unpublished/' + currentDocId)
 			.get()
 			.then((doc) => {
 				const data = doc.data();
 
-				projectFirestore.doc('unpublished/' + currentDocId).set({
-					...data,
-					...state,
-				});
+				projectFirestore
+					.doc('unpublished/' + currentDocId)
+					.set(state)
+					.catch((error) => console.log(error));
 			})
 			.then(() => hideItemCardEdit(event));
 	};
@@ -164,7 +168,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
 	return {
-		//		currentDoc: state.itemUpload.currentDoc,
+		currentDoc: state.itemUpload.currentDoc,
 	};
 };
 

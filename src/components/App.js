@@ -4,6 +4,7 @@ import Footer from './Footer.js';
 import Header from './Header.js';
 import Home from './Home.js';
 import Catalog from './Catalog.js';
+import Signin from './Signin.js';
 import ContactUs from './ContactUs.js';
 import Content from './Content';
 import '../css/App.css';
@@ -30,6 +31,7 @@ function App() {
 						<Route path="/itemupload" component={ItemUpload} />
 						<Route path="/cart" component={Cart} />
 						<Route path="/cartempty" component={CartEmpty} />
+						<Route path="/signin" component={Signin} />
 						<Route path="/test" component={Test} />
 					</Switch>
 				</Content>

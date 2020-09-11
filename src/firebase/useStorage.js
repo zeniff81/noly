@@ -25,13 +25,14 @@ const useStorageMultiple = ([alert, files]) => {
 				async () => {
 					const currentUrl = await storageRef.getDownloadURL();
 					await firestoreRef.add({
+						category: 'unpublished',
+						createdAt: Date.now(),
 						description: 'new description',
+						imageUrl: currentUrl,
 						isNew: 'new isNew',
+						price: 0,
 						size: 'new size',
 						title: 'new title',
-						price: 0,
-						imageUrl: currentUrl,
-						createdAt: Date.now(),
 					});
 					setImageUrl(currentUrl);
 				}

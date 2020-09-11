@@ -15,7 +15,12 @@ const ItemCardMenu = ({ setShowMenu, setShowEdit, setCurrentDoc, doc }) => {
 
 	const publishItem = (e) => {
 		e.stopPropagation();
-		console.log(doc);
+		console.log(doc.category);
+
+		if (doc.category === 'unpublished') {
+			alert('Por favor EDITAR y elegir categoría');
+			return;
+		}
 
 		projectFirestore
 			.collection(doc.category)

@@ -43,11 +43,19 @@
 	background: var(--colorSecondary);
 	color: white;
 	display: flex;
-	height: 50px;
+	height: 40px;
 	justify-content: center;
 	margin: 1px;
-	width: 50px;
+	width: 40px;
 }
 
-.materialIcon {
+.navbar__user {
+	display: flex;
+	justify-content: flex-end;
+	font-size: 1.1em;
+}
+
+.navbar__username {
+	font-weight: bold;
+	margin-left: 0.5em;
 }

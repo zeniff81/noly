@@ -75,8 +75,3 @@ select {
 	color: var(--colorPrimary);
 	font-size: 1.2em;
 }
-
-select:hover {
-	background: var(--colorPrimary);
-	color: white;
-}

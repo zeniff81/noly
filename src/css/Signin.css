@@ -1,0 +1,43 @@
+.signin {
+	border: 1px solid pink;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1em;
+}
+
+.signin__icon {
+	font-size: 3em !important;
+}
+
+.signin__label {
+	display: block;
+	text-align: center;
+}
+
+.signin__input {
+	display: block;
+	margin-bottom: 1em;
+}
+
+.signin__btn {
+	display: block;
+	padding: 0.5em 1em;
+}
+
+.signin__result {
+	color: red;
+	font-style: italic;
+}
+
+.test {
+	padding: 1em;
+	border: 1px solid blue;
+	margin: 1em;
+}
+
+.test__btn {
+	padding: 1em;
+	background: blue;
+	color: white;
+}

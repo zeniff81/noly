@@ -35,8 +35,11 @@ function ItemUploader() {
 					multiple
 					onChange={onChangeHandler}
 				/>
-				<button className="inputFile" onClick={() => inputRef.current.click()}>
-					Subir artículos
+				<button
+					className="inputFile hover active"
+					onClick={() => inputRef.current.click()}
+				>
+					+
 				</button>
 			</div>
 
@@ -57,7 +60,7 @@ function ItemUploader() {
 			{/* ProgressBar */}
 			{items && <ProgressBar progress={progress} />}
 
-			{/* ItemList */}
+			{/* ItemCard */}
 			<div className="itemUploader__itemList">
 				{docs &&
 					docs.map((doc) => (

@@ -1,3 +1,5 @@
+import { auth } from '../../firebase/config';
+
 const initialState = {
 	user: 'invitado',
 	email: '',
@@ -18,8 +20,41 @@ export const login = (userInfo) => {
 };
 
 export const logout = () => {
-	return {
-		type: 'LOGOUT',
+	return (dispatch) => {
+		auth
+			.signOut()
+			.then(() => {
+				const newUserInfo = {
+					user: 'Invitado',
+					email: '',
+					loggedIn: false,
+				};
+				dispatch(login(newUserInfo));
+			})
+			.catch((error) => alert(error.message));
+	};
+};
+
+export const requestLogin = (userInfo) => {
+	return function (dispatch) {
+		auth
+			.signInWithEmailAndPassword(userInfo.email, userInfo.password)
+			.then(() => {
+				const newUserInfo = {
+					user: 'MORENO',
+					email: userInfo.email,
+					loggedIn: true,
+				};
+				dispatch(login(newUserInfo));
+			})
+			.catch((error) => {
+				const newUserInfo = {
+					user: 'Invitado',
+					email: '',
+					loggedIn: false,
+				};
+				dispatch(login(newUserInfo));
+			});
 	};
 };
 
@@ -31,7 +66,7 @@ const authReducer = (state = initialState, action) => {
 				...state,
 				user: action.payload.user,
 				email: action.payload.email,
-				loggedIn: true,
+				loggedIn: action.payload.loggedIn,
 				administrator: isAdmin,
 			};
 

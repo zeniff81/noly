@@ -1,54 +1,63 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PersonIcon from '@material-ui/icons/Person';
 import '../css/Signin.css';
 import { auth } from '../firebase/config';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { login, logout } from '../redux/auth/reducer';
+import { requestLogin, logout } from '../redux/auth/reducer';
+import { Redirect } from 'react-router-dom';
 
 function SignIn({
-	user,
 	loggedIn,
-	attemptLogin,
+	requestLogin,
 	attemptLogout,
 	email,
 	administrator,
 }) {
 	const [emailValue, setEmailValue] = useState('');
 	const [password, setPassword] = useState('');
+	const [user, setUser] = useState('');
+	const [isLoggedIn, setisLoggedIn] = useState(false);
+
 	const [result, setResult] = useState({
-		result: 'rr',
-		color: 'rr',
+		message: 'this is a test',
+		color: '',
 	});
+
+	useEffect(() => {
+		console.log('useeffect: loggedIn', isLoggedIn);
+		if (loggedIn) {
+			setResult({
+				message: 'Bienvenido/a. Los datos son corrects.',
+				color: 'green',
+			});
+		} else {
+			setResult({
+				message: 'El email o la contraseña están incorrectos.',
+				color: 'red',
+			});
+		}
+		console.log(result);
+	}, [loggedIn]);
 
 	const loginClick = (e) => {
 		e.preventDefault();
-		auth
-			.signInWithEmailAndPassword(email, password)
-			.then(() => {
-				setResult({
-					message: 'Exito! Los datos son correctos.',
-					color: 'green',
-				});
-			})
-			.catch((error) => {
-				setResult({ message: error.message, color: 'red' });
-			});
-	};
-
-	const testLogin = (e) => {
-		e.preventDefault();
-		attemptLogin({ user: 'MORENO', email: emailValue });
-	};
-	const testLogout = (e) => {
-		e.preventDefault();
-		attemptLogout();
+		const userInfo = {
+			user: user,
+			email: emailValue,
+			password: password,
+			loggedIn: true,
+			administrator: null,
+		};
+		requestLogin(userInfo);
 	};
 
 	return (
 		<form className="signin">
+			{loggedIn && <Redirect to="/home" />}
 			<PersonIcon className="signin__icon" />
 			<h2>Login</h2>
+
 			<label className="signin__label" htmlFor="email">
 				email
 			</label>
@@ -76,29 +85,7 @@ function SignIn({
 				Login
 			</button>
 			<div className="signin__result" style={{ color: result.color }}>
-				{result.message}
-			</div>
-
-			<div className="test">
-				<button onClick={testLogin} className="test__btn">
-					LOGIN
-				</button>
-				<button onClick={testLogout} className="test__btn">
-					LOGOUT
-				</button>
-
-				<p>
-					<label htmlFor="">user::: : {user}</label>
-					<br />
-					<label htmlFor="">loggedin::: : {loggedIn.toString()}</label>
-					<br />
-					<label htmlFor="">email::: : {email}</label>
-					<br />
-					<label htmlFor="">
-						administrator::: : {administrator.toString()}
-					</label>
-					<br />
-				</p>
+				Result: {result.message}
 			</div>
 		</form>
 	);
@@ -115,8 +102,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		attemptLogin: ({ user, email }) => dispatch(login({ user, email })),
-		attemptLogout: () => dispatch(logout()),
+		requestLogin: (userInfo) => dispatch(requestLogin(userInfo)),
+		attempLogout: () => dispatch(logout()),
 	};
 };
 

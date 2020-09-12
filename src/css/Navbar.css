@@ -3,6 +3,7 @@
 	display: flex;
 	justify-content: space-between;
 	padding: 0 1em;
+	border: 1px solid red;
 }
 
 .navbar > div {
@@ -58,4 +59,15 @@
 .navbar__username {
 	font-weight: bold;
 	margin-left: 0.5em;
+}
+
+.navbar__category {
+	box-shadow: 1px 1px 5px #ddd;
+	align-self: center;
+	width: 30%;
+	max-width: 300px;
+}
+
+.navbar__category select {
+	width: 100%;
 }

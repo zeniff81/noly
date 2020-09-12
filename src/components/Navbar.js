@@ -6,11 +6,19 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PublishIcon from '@material-ui/icons/Publish';
 import PersonIcon from '@material-ui/icons/Person';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { connect } from 'react-redux';
+import auth from '../firebase/config';
+import { logout } from '../redux/auth/reducer';
+
 const logo =
 	'https://firebasestorage.googleapis.com/v0/b/habla-con-noly.appspot.com/o/assets%2Flogo.png?alt=media&token=88efa2d4-655e-4c67-ac8e-eeaead9628d3';
 
-function Navbar({ user, administrator, loggedIn }) {
+function Navbar({ user, administrator, loggedIn, attemptLogout }) {
+	const logout = () => {
+		attemptLogout();
+	};
+
 	return (
 		<div className="navbar">
 			<div className="navbar__logoContainer">
@@ -19,19 +27,32 @@ function Navbar({ user, administrator, loggedIn }) {
 				</Link>
 			</div>
 
+			<div className="navbar__category">
+				<select name="navbar__category" id="navbar__category">
+					<option value="colchas">Colchas</option>
+					<option value="ropa">Ropa</option>
+					<option value="hogar">Hogar</option>
+					<option value="cortinas">Cortinas</option>
+				</select>
+			</div>
+
 			<div className="navbar__column">
 				<div className="navbar__links ">
+					<Link to="/" className="Link">
+						<HomeIcon className="materialIcon" />
+					</Link>
+
+					<Link to="/contactus" className="Link">
+						<WhatsAppIcon className="materialIcon" />
+					</Link>
+
+					<Link to="/cart" className="Link">
+						<ShoppingCartIcon className="materialIcon" />
+					</Link>
+
 					{/* guest */}
-					{!administrator && (
+					{!loggedIn && (
 						<>
-							<Link to="/" className="Link">
-								<HomeIcon className="materialIcon" />
-							</Link>
-
-							<Link to="/contactus" className="Link">
-								<WhatsAppIcon className="materialIcon" />
-							</Link>
-
 							<Link to="/signin" className="Link">
 								<PersonIcon className="materialIcon" />
 							</Link>
@@ -39,13 +60,19 @@ function Navbar({ user, administrator, loggedIn }) {
 					)}
 
 					{/* loggedin */}
+					{loggedIn && (
+						<>
+							<div className="Link" onClick={logout}>
+								<ExitToAppIcon className="materialIcon" />
+							</div>
+						</>
+					)}
+
+					{/* administrator */}
 					{administrator && (
 						<>
 							<Link to="/itemupload" className="Link">
 								<PublishIcon className="materialIcon" />
-							</Link>
-							<Link to="/cart" className="Link">
-								<ShoppingCartIcon className="materialIcon" />
 							</Link>
 						</>
 					)}
@@ -67,9 +94,10 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps)(Navbar);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		attemptLogout: () => dispatch(logout()),
+	};
+};
 
-// TODO Organize NAVBAR links by
-// loggedin
-// administrator
-// etc
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
